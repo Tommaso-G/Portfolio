@@ -256,6 +256,68 @@
   .card-media video, .card-media img{
     width:100%; height:100%; object-fit: cover;
   }
+  .card-media{ position: relative; cursor: pointer; }
+  .card-media .play-overlay{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    background: rgba(14,17,22,0.25);
+    transition: background .2s;
+  }
+  .card-media:hover .play-overlay, .card-media:focus-visible .play-overlay{
+    background: rgba(14,17,22,0.5);
+  }
+  .play-overlay svg{
+    width: 48px; height: 48px;
+    opacity: 0.92;
+    transition: transform .2s;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  }
+  .card-media:hover .play-overlay svg, .card-media:focus-visible .play-overlay svg{
+    transform: scale(1.1);
+  }
+
+  /* ---------- Video modal ---------- */
+  .video-modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(6,8,10,0.9);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px 24px;
+  }
+  .video-modal.active{ display: flex; }
+  .video-modal-inner{
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border: 1px solid var(--line);
+  }
+  .video-modal-inner iframe{
+    width: 100%; height: 100%; border: 0;
+  }
+  .video-modal-close{
+    position: absolute;
+    top: -42px;
+    right: 0;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+  }
+  .video-modal-close:hover, .video-modal-close:focus-visible{
+    border-color: var(--accent);
+    color: var(--accent);
+  }
   .card-top{
     display:flex;
     justify-content: space-between;
@@ -412,8 +474,8 @@
       <div class="viewport hero-inner">
         <div class="b2"></div>
         <div class="hud-label hero-tag">// technical art &amp; graphics development</div>
-        <h1>Programmazione, grafica 3D e rendering <em>real-time</em> per la creazione di contenuti ed esperienze interattive.</h1>
-        <p class="lead">Technical Artist e Graphics Developer — Programmazione, Unity, Blender, VR, compositing VFX.</p>
+        <h1>Unisco codice e immagine: rendering <em>real-time</em>, VFX e pipeline grafiche.</h1>
+        <p class="lead">Technical Artist e Graphics Developer — C++, Unity, shader, compositing VFX.</p>
         <div class="hero-actions">
           <a href="#progetti" class="btn btn-primary">Vedi i progetti</a>
           <a href="assets/cv-tommaso.pdf" class="btn btn-ghost">Scarica CV</a>
@@ -434,9 +496,14 @@
       <div class="grid">
 
         <article class="card">
-          <div class="card-media">
-            <!-- Sostituisci con <video> o <img> reale -->
-            ANTEPRIMA / VIDEO
+          <div class="card-media" data-youtube="ID_VIDEO_YOUTUBE_1" role="button" tabindex="0" aria-label="Guarda il video: Motore 3D custom">
+            <!-- Sostituisci ID_VIDEO_YOUTUBE_1 con l'ID del video YouTube (o con <img>/<video> se preferisci un'anteprima statica) -->
+            <div class="play-overlay">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" stroke="#E6E8EB" stroke-width="1.5"/>
+                <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#E6E8EB"/>
+              </svg>
+            </div>
           </div>
           <div class="card-top">
             <h3>Motore 3D custom</h3>
@@ -452,7 +519,14 @@
         </article>
 
         <article class="card">
-          <div class="card-media">ANTEPRIMA / VIDEO</div>
+          <div class="card-media" data-youtube="ID_VIDEO_YOUTUBE_2" role="button" tabindex="0" aria-label="Guarda il video: VFX per spot animati">
+            <div class="play-overlay">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" stroke="#E6E8EB" stroke-width="1.5"/>
+                <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#E6E8EB"/>
+              </svg>
+            </div>
+          </div>
           <div class="card-top">
             <h3>VFX per spot animati</h3>
             <span class="card-year">2023–2025</span>
@@ -467,7 +541,14 @@
         </article>
 
         <article class="card">
-          <div class="card-media">ANTEPRIMA / VIDEO</div>
+          <div class="card-media" data-youtube="ID_VIDEO_YOUTUBE_3" role="button" tabindex="0" aria-label="Guarda il video: Riconoscimento scrittura manuale">
+            <div class="play-overlay">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" stroke="#E6E8EB" stroke-width="1.5"/>
+                <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#E6E8EB"/>
+              </svg>
+            </div>
+          </div>
           <div class="card-top">
             <h3>Riconoscimento scrittura manuale</h3>
             <span class="card-year">2023–2025</span>
@@ -482,7 +563,14 @@
         </article>
 
         <article class="card">
-          <div class="card-media">ANTEPRIMA / VIDEO</div>
+          <div class="card-media" data-youtube="ID_VIDEO_YOUTUBE_4" role="button" tabindex="0" aria-label="Guarda il video: Formazione antincendio in VR">
+            <div class="play-overlay">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" stroke="#E6E8EB" stroke-width="1.5"/>
+                <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#E6E8EB"/>
+              </svg>
+            </div>
+          </div>
           <div class="card-top">
             <h3>Formazione antincendio in VR</h3>
             <span class="card-year">2026</span>
@@ -511,7 +599,7 @@
       <div class="about-grid">
         <div class="about-text">
           <p>Laureato in <strong>Informatica</strong> e successivamente in <strong>Ingegneria del Cinema e dei Mezzi di Comunicazione</strong> al Politecnico di Torino. Lavoro all'intersezione tra rendering real-time, VFX compositing e sviluppo software, con motori di gioco moderni, C++/OpenGL e strumenti assistiti dall'AI.</p>
-          <p>Tra i miei ambiti: Modellazione e animazione 3d, sistemi interattivi in Unity, Virtual Reality, compositing VFX per prodotti audiovisivi e modelli di machine learning in Python. Attualmente in cerca di opportunità nello sviluppo Unity/VR/AR nel Nord Italia.</p>
+          <p>Tra i miei ambiti: shader e pipeline grafiche, sistemi interattivi in Unity, compositing VFX per prodotti audiovisivi e modelli di machine learning in Python. Attualmente in cerca di opportunità nello sviluppo Unity/VR/AR nel Nord Italia.</p>
         </div>
         <div class="skill-panel viewport">
           <div class="b2"></div>
@@ -544,8 +632,50 @@
 
 <footer class="wrap">
   <span>© 2026 Tommaso</span>
-  <span>Pagina non indicizzata — condivisa solo tramite link diretto</span>
+  <span>Portfolio personale</span>
 </footer>
+
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" type="button">Chiudi ✕</button>
+    <iframe id="videoModalIframe" src="" title="Anteprima video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var modal = document.getElementById('videoModal');
+    var iframe = document.getElementById('videoModalIframe');
+
+    function openModal(youtubeId){
+      if(!youtubeId) return;
+      iframe.src = 'https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&rel=0';
+      modal.classList.add('active');
+    }
+    function closeModal(){
+      modal.classList.remove('active');
+      iframe.src = ''; // ferma la riproduzione quando si chiude
+    }
+
+    document.querySelectorAll('.card-media[data-youtube]').forEach(function(el){
+      el.addEventListener('click', function(){ openModal(el.dataset.youtube); });
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openModal(el.dataset.youtube);
+        }
+      });
+    });
+
+    document.getElementById('videoModalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e){
+      if(e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+  })();
+</script>
 
 </body>
 </html>
