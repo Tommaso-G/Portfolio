@@ -3,1104 +3,1347 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Tommaso — Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 
 <style>
 
-  :root{
-    --bg: #0E1116;
-    --bg-panel: #161B22;
-    --bg-panel-2: #1C222B;
-    --line: #2A313C;
-    --text: #E6E8EB;
-    --text-muted: #8B94A3;
-    --accent: #4FD1C5;
-    --accent-dim: #2E5E5A;
-    --accent-2: #F2A65A;
-    --radius: 2px;
+:root{
+  --bg: #0E1116;
+  --bg-panel: #161B22;
+  --bg-panel-2: #1C222B;
 
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
+  --line: #2A313C;
+
+  --text: #E6E8EB;
+  --text-muted: #8B94A3;
+
+  --accent: #4FD1C5;
+  --accent-dim: #2E5E5A;
+
+  --accent-2: #F2A65A;
+
+  --radius: 2px;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+
+html{
+  scroll-behavior:smooth;
+}
+
+
+body{
+  background:var(--bg);
+  color:var(--text);
+
+  font-family:var(--font-body);
+
+  line-height:1.5;
+
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+
+  background-size:48px 48px;
+
+  background-position:-1px -1px;
+
+  background-attachment:fixed;
+}
+
+
+a{
+  color:inherit;
+}
+
+
+.wrap{
+  max-width:1120px;
+
+  margin:0 auto;
+
+  padding:0 28px;
+}
+
+
+
+/* =========================================================
+   VIEWPORT
+   ========================================================= */
+
+.viewport{
+  position:relative;
+
+  border:1px solid var(--line);
+
+  background:rgba(14,17,22,0.4);
+
+  backdrop-filter:blur(2px);
+}
+
+
+.viewport::before,
+.viewport::after,
+.viewport .b2::before,
+.viewport .b2::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:18px;
+  height:18px;
+
+  border:2px solid var(--accent);
+
+  opacity:0.85;
+}
+
+
+.viewport::before{
+  top:-1px;
+  left:-1px;
+
+  border-right:none;
+  border-bottom:none;
+}
+
+
+.viewport::after{
+  top:-1px;
+  right:-1px;
+
+  border-left:none;
+  border-bottom:none;
+}
+
+
+.viewport .b2::before{
+  bottom:-1px;
+  left:-1px;
+
+  border-right:none;
+  border-top:none;
+}
+
+
+.viewport .b2::after{
+  bottom:-1px;
+  right:-1px;
+
+  border-left:none;
+  border-top:none;
+}
+
+
+.hud-label{
+
+  font-family:var(--font-mono);
+
+  font-size:11px;
+
+  letter-spacing:0.12em;
+
+  text-transform:uppercase;
+
+  color:var(--accent);
+}
+
+
+
+/* =========================================================
+   FLOATING BACKGROUND ICONS
+   ========================================================= */
+
+.bg-icons{
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+}
+
+
+.bg-icon{
+
+  position:absolute;
+
+  color:var(--accent);
+
+  /*
+    Aumentata luminosità.
+    Tutte le icone sono comprese
+    tra 0.3 e 0.8.
+  */
+
+  opacity:0.50;
+}
+
+
+.bg-icon svg{
+
+  width:100%;
+  height:100%;
+
+  display:block;
+}
+
+
+
+/* ICON 1 */
+
+.bg-icon-1{
+
+  top:10%;
+  left:6%;
+
+  width:22px;
+  height:22px;
+
+  animation:floatA 4.5s ease-in-out infinite;
+
+  opacity:0.55;
+}
+
+
+
+/* ICON 2 */
+
+.bg-icon-2{
+
+  top:18%;
+  right:9%;
+
+  width:30px;
+  height:30px;
+
+  animation:floatB 5.5s ease-in-out infinite;
+
+  animation-delay:-1.5s;
+
+  opacity:0.45;
+}
+
+
+
+/* ICON 3 */
+
+.bg-icon-3{
+
+  top:50%;
+  left:4%;
+
+  width:20px;
+  height:20px;
+
+  animation:floatC 5s ease-in-out infinite;
+
+  animation-delay:-2.5s;
+
+  opacity:0.60;
+}
+
+
+
+/* ICON 4 */
+
+.bg-icon-4{
+
+  top:64%;
+  right:7%;
+
+  width:24px;
+  height:24px;
+
+  animation:floatA 6s ease-in-out infinite;
+
+  animation-delay:-0.8s;
+
+  opacity:0.50;
+}
+
+
+
+/* ICON 5 */
+
+.bg-icon-5{
+
+  top:36%;
+  left:48%;
+
+  width:18px;
+  height:18px;
+
+  animation:floatB 6.5s ease-in-out infinite;
+
+  animation-delay:-3.5s;
+
+  opacity:0.40;
+}
+
+
+
+/* ICON 6 */
+
+.bg-icon-6{
+
+  top:82%;
+  left:30%;
+
+  width:22px;
+  height:22px;
+
+  animation:floatC 5.2s ease-in-out infinite;
+
+  animation-delay:-1.8s;
+
+  opacity:0.65;
+}
+
+
+
+/* ICON 7 */
+
+.bg-icon-7{
+
+  top:6%;
+  left:34%;
+
+  width:20px;
+  height:20px;
+
+  animation:floatB 4.8s ease-in-out infinite;
+
+  animation-delay:-2s;
+
+  opacity:0.45;
+}
+
+
+
+/* ICON 8 */
+
+.bg-icon-8{
+
+  top:30%;
+  left:16%;
+
+  width:26px;
+  height:26px;
+
+  animation:floatA 5.8s ease-in-out infinite;
+
+  animation-delay:-4s;
+
+  opacity:0.55;
+}
+
+
+
+/* ICON 9 */
+
+.bg-icon-9{
+
+  top:46%;
+  right:22%;
+
+  width:18px;
+  height:18px;
+
+  animation:floatC 4.2s ease-in-out infinite;
+
+  animation-delay:-1.2s;
+
+  opacity:0.70;
+}
+
+
+
+/* ICON 10 */
+
+.bg-icon-10{
+
+  top:74%;
+  left:12%;
+
+  width:24px;
+  height:24px;
+
+  animation:floatB 6.2s ease-in-out infinite;
+
+  animation-delay:-3s;
+
+  opacity:0.50;
+}
+
+
+
+/* ICON 11 */
+
+.bg-icon-11{
+
+  top:90%;
+  right:14%;
+
+  width:20px;
+  height:20px;
+
+  animation:floatA 5s ease-in-out infinite;
+
+  animation-delay:-0.5s;
+
+  opacity:0.60;
+}
+
+
+
+/* ICON 12 */
+
+.bg-icon-12{
+
+  top:58%;
+  left:62%;
+
+  width:22px;
+  height:22px;
+
+  animation:floatC 6.8s ease-in-out infinite;
+
+  animation-delay:-4.5s;
+
+  opacity:0.45;
+}
+
+
+
+/* =========================================================
+   FLOATING ANIMATIONS
+   ========================================================= */
+
+@keyframes floatA{
+
+  0%{
+    transform:translate(0,0) rotate(0deg);
   }
 
-
-  *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  33%{
+    transform:translate(55px,-70px) rotate(-10deg);
   }
 
-
-  html{
-    scroll-behavior: smooth;
+  66%{
+    transform:translate(-40px,-40px) rotate(6deg);
   }
 
-
-  body{
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    line-height: 1.5;
-
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-
-    background-size: 48px 48px;
-    background-position: -1px -1px;
-    background-attachment: fixed;
+  100%{
+    transform:translate(0,0) rotate(0deg);
   }
 
+}
 
-  a{
-    color: inherit;
+
+@keyframes floatB{
+
+  0%{
+    transform:translate(0,0) rotate(0deg);
   }
 
-
-  .wrap{
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 28px;
+  33%{
+    transform:translate(-65px,-50px) rotate(9deg);
   }
 
-
-  /* ---------- Corner bracket / viewport signature ---------- */
-
-  .viewport{
-    position: relative;
-    border: 1px solid var(--line);
-    background: rgba(14,17,22,0.4);
-    backdrop-filter: blur(2px);
+  66%{
+    transform:translate(45px,-65px) rotate(-7deg);
   }
 
-
-  .viewport::before,
-  .viewport::after,
-  .viewport .b2::before,
-  .viewport .b2::after{
-    content:"";
-    position:absolute;
-
-    width:18px;
-    height:18px;
-
-    border: 2px solid var(--accent);
-    opacity: 0.85;
+  100%{
+    transform:translate(0,0) rotate(0deg);
   }
 
+}
 
-  .viewport::before{
-    top:-1px;
-    left:-1px;
 
-    border-right:none;
-    border-bottom:none;
+@keyframes floatC{
+
+  0%{
+    transform:translate(0,0) scale(1);
   }
 
-
-  .viewport::after{
-    top:-1px;
-    right:-1px;
-
-    border-left:none;
-    border-bottom:none;
+  33%{
+    transform:translate(60px,-35px) scale(1.1);
   }
 
-
-  .viewport .b2::before{
-    bottom:-1px;
-    left:-1px;
-
-    border-right:none;
-    border-top:none;
+  66%{
+    transform:translate(-50px,-60px) scale(0.95);
   }
 
-
-  .viewport .b2::after{
-    bottom:-1px;
-    right:-1px;
-
-    border-left:none;
-    border-top:none;
+  100%{
+    transform:translate(0,0) scale(1);
   }
 
+}
 
-  .hud-label{
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
 
 
-  /* ---------- Floating background icons ---------- */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
-  .bg-icons{
-    position: fixed;
-    inset: 0;
+header{
 
-    z-index: 0;
+  position:sticky;
 
-    overflow: hidden;
-    pointer-events: none;
-  }
+  top:0;
 
+  z-index:50;
 
-  .bg-icon{
-    position: absolute;
+  background:rgba(14,17,22,0.85);
 
-    color: var(--accent);
+  backdrop-filter:blur(8px);
 
-    /* Aumentata luminosità */
-    opacity: 0.30;
-  }
+  border-bottom:1px solid var(--line);
+}
 
 
-  .bg-icon svg{
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+.nav{
 
+  display:flex;
 
-  .bg-icon-1{
-    top: 10%;
-    left: 6%;
+  align-items:center;
 
-    width: 22px;
-    height: 22px;
+  justify-content:space-between;
 
-    animation: floatA 4.5s ease-in-out infinite;
-  }
+  padding:18px 0;
+}
 
 
-  .bg-icon-2{
-    top: 18%;
-    right: 9%;
+.logo{
 
-    width: 30px;
-    height: 30px;
+  font-family:var(--font-display);
 
-    animation: floatB 5.5s ease-in-out infinite;
-    animation-delay: -1.5s;
+  font-weight:700;
 
-    opacity: 0.25;
-  }
+  font-size:18px;
 
+  letter-spacing:0.02em;
+}
 
-  .bg-icon-3{
-    top: 50%;
-    left: 4%;
 
-    width: 20px;
-    height: 20px;
+.logo span{
+  color:var(--accent);
+}
 
-    animation: floatC 5s ease-in-out infinite;
-    animation-delay: -2.5s;
-  }
 
+.nav-links{
 
-  .bg-icon-4{
-    top: 64%;
-    right: 7%;
+  display:flex;
 
-    width: 24px;
-    height: 24px;
+  gap:32px;
 
-    animation: floatA 6s ease-in-out infinite;
-    animation-delay: -0.8s;
-  }
+  list-style:none;
 
+  font-family:var(--font-mono);
 
-  .bg-icon-5{
-    top: 36%;
-    left: 48%;
+  font-size:13px;
 
-    width: 18px;
-    height: 18px;
+  text-transform:uppercase;
 
-    animation: floatB 6.5s ease-in-out infinite;
-    animation-delay: -3.5s;
+  letter-spacing:0.08em;
+}
 
-    opacity: 0.8;
-  }
 
+.nav-links a{
 
-  .bg-icon-6{
-    top: 82%;
-    left: 30%;
+  text-decoration:none;
 
-    width: 22px;
-    height: 22px;
+  color:var(--text-muted);
 
-    animation: floatC 5.2s ease-in-out infinite;
-    animation-delay: -1.8s;
-  }
+  transition:color .2s;
 
+  position:relative;
+}
 
-  .bg-icon-7{
-    top: 6%;
-    left: 34%;
 
-    width: 20px;
-    height: 20px;
+.nav-links a:hover,
+.nav-links a:focus-visible{
 
-    animation: floatB 4.8s ease-in-out infinite;
-    animation-delay: -2s;
-  }
+  color:var(--text);
+}
 
 
-  .bg-icon-8{
-    top: 30%;
-    left: 16%;
+.nav-links a::after{
 
-    width: 26px;
-    height: 26px;
+  content:"";
 
-    animation: floatA 5.8s ease-in-out infinite;
-    animation-delay: -4s;
+  position:absolute;
 
-    opacity: 0.24;
-  }
+  left:0;
 
+  bottom:-4px;
 
-  .bg-icon-9{
-    top: 46%;
-    right: 22%;
+  width:0;
 
-    width: 18px;
-    height: 18px;
+  height:1px;
 
-    animation: floatC 4.2s ease-in-out infinite;
-    animation-delay: -1.2s;
-  }
+  background:var(--accent);
 
+  transition:width .2s;
+}
 
-  .bg-icon-10{
-    top: 74%;
-    left: 12%;
 
-    width: 24px;
-    height: 24px;
+.nav-links a:hover::after{
+  width:100%;
+}
 
-    animation: floatB 6.2s ease-in-out infinite;
-    animation-delay: -3s;
-  }
 
 
-  .bg-icon-11{
-    top: 90%;
-    right: 14%;
+/* =========================================================
+   HERO
+   ========================================================= */
 
-    width: 20px;
-    height: 20px;
+.hero{
 
-    animation: floatA 5s ease-in-out infinite;
-    animation-delay: -0.5s;
+  padding:90px 0 70px;
+}
 
-    opacity: 0.23;
-  }
 
+.hero-inner{
 
-  .bg-icon-12{
-    top: 58%;
-    left: 62%;
+  padding:56px 48px;
 
-    width: 22px;
-    height: 22px;
+  position:relative;
+}
 
-    animation: floatC 6.8s ease-in-out infinite;
-    animation-delay: -4.5s;
-  }
 
+.hero-tag{
+  margin-bottom:22px;
+}
 
-  /* ---------- Floating animations ---------- */
 
-  @keyframes floatA{
+.hero h1{
 
-    0%{
-      transform: translate(0,0) rotate(0deg);
-    }
+  font-family:var(--font-display);
 
-    33%{
-      transform: translate(55px,-70px) rotate(-10deg);
-    }
+  font-weight:600;
 
-    66%{
-      transform: translate(-40px,-40px) rotate(6deg);
-    }
+  font-size:clamp(34px,5vw,58px);
 
-    100%{
-      transform: translate(0,0) rotate(0deg);
-    }
+  line-height:1.08;
 
-  }
+  max-width:780px;
 
+  letter-spacing:-0.01em;
+}
 
-  @keyframes floatB{
 
-    0%{
-      transform: translate(0,0) rotate(0deg);
-    }
+.hero h1 em{
 
-    33%{
-      transform: translate(-65px,-50px) rotate(9deg);
-    }
+  font-style:normal;
 
-    66%{
-      transform: translate(45px,-65px) rotate(-7deg);
-    }
+  color:var(--accent);
+}
 
-    100%{
-      transform: translate(0,0) rotate(0deg);
-    }
 
-  }
+.hero p.lead{
 
+  margin-top:22px;
 
-  @keyframes floatC{
+  max-width:560px;
 
-    0%{
-      transform: translate(0,0) scale(1);
-    }
+  color:var(--text-muted);
 
-    33%{
-      transform: translate(60px,-35px) scale(1.1);
-    }
+  font-size:17px;
+}
 
-    66%{
-      transform: translate(-50px,-60px) scale(0.95);
-    }
 
-    100%{
-      transform: translate(0,0) scale(1);
-    }
+.hero-actions{
 
-  }
+  margin-top:36px;
 
+  display:flex;
 
-  /* ---------- Header ---------- */
+  gap:16px;
 
-  header{
-    position: sticky;
-    top: 0;
+  flex-wrap:wrap;
+}
 
-    z-index: 50;
 
-    background: rgba(14,17,22,0.85);
-    backdrop-filter: blur(8px);
+.btn{
 
-    border-bottom: 1px solid var(--line);
-  }
+  font-family:var(--font-mono);
 
+  font-size:13px;
 
-  .nav{
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
+  letter-spacing:0.05em;
 
-    padding: 18px 0;
-  }
+  text-transform:uppercase;
 
+  padding:13px 24px;
 
-  .logo{
-    font-family: var(--font-display);
-    font-weight:700;
-    font-size: 18px;
-    letter-spacing: 0.02em;
-  }
+  text-decoration:none;
 
+  border-radius:var(--radius);
 
-  .logo span{
-    color: var(--accent);
-  }
+  display:inline-flex;
 
+  align-items:center;
+
+  gap:8px;
+
+  transition:
+    transform .15s,
+    background .2s,
+    border-color .2s;
+}
+
+
+.btn-primary{
+
+  background:var(--accent);
+
+  color:#06171A;
+
+  border:1px solid var(--accent);
+
+  font-weight:600;
+}
+
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+}
+
+
+.btn-ghost{
+
+  border:1px solid var(--line);
+
+  color:var(--text);
+}
+
+
+.btn-ghost:hover{
+
+  border-color:var(--accent);
+
+  color:var(--accent);
+}
+
+
+.hero-coords{
+
+  position:absolute;
+
+  bottom:18px;
+
+  right:24px;
+
+  font-family:var(--font-mono);
+
+  font-size:11px;
+
+  color:var(--text-muted);
+
+  letter-spacing:0.05em;
+}
+
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+section{
+  padding:70px 0;
+}
+
+
+.section-head{
+
+  display:flex;
+
+  align-items:baseline;
+
+  gap:16px;
+
+  margin-bottom:40px;
+}
+
+
+.section-num{
+
+  font-family:var(--font-mono);
+
+  color:var(--accent);
+
+  font-size:13px;
+}
+
+
+.section-title{
+
+  font-family:var(--font-display);
+
+  font-size:28px;
+
+  font-weight:600;
+}
+
+
+.section-rule{
+
+  flex:1;
+
+  height:1px;
+
+  background:var(--line);
+}
+
+
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+
+.grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:24px;
+}
+
+
+.card{
+
+  /*
+    Le card stanno sempre sopra
+    alle icone flottanti.
+  */
+
+  position:relative;
+
+  z-index:1;
+
+  background:var(--bg-panel);
+
+  border:1px solid var(--line);
+
+  padding:26px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:14px;
+
+  transition:
+    border-color .2s,
+    transform .2s;
+}
+
+
+.card:hover,
+.card:focus-within{
+
+  border-color:var(--accent-dim);
+
+  transform:translateY(-3px);
+}
+
+
+.card-media{
+
+  aspect-ratio:16/9;
+
+  background:var(--bg-panel-2);
+
+  border:1px dashed var(--line);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-family:var(--font-mono);
+
+  font-size:11px;
+
+  color:var(--text-muted);
+
+  text-transform:uppercase;
+
+  letter-spacing:0.08em;
+
+  overflow:hidden;
+
+  position:relative;
+
+  cursor:pointer;
+}
+
+
+.card-media video,
+.card-media img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+}
+
+
+.card-top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  gap:12px;
+}
+
+
+.card h3{
+
+  font-family:var(--font-display);
+
+  font-size:19px;
+
+  font-weight:600;
+}
+
+
+.card-year{
+
+  font-family:var(--font-mono);
+
+  font-size:11px;
+
+  color:var(--text-muted);
+
+  white-space:nowrap;
+
+  margin-top:4px;
+}
+
+
+.card p{
+
+  color:var(--text-muted);
+
+  font-size:14.5px;
+}
+
+
+.tags{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  margin-top:auto;
+}
+
+
+.tag{
+
+  font-family:var(--font-mono);
+
+  font-size:10.5px;
+
+  text-transform:uppercase;
+
+  letter-spacing:0.06em;
+
+  color:var(--accent);
+
+  border:1px solid var(--accent-dim);
+
+  padding:4px 9px;
+
+  border-radius:var(--radius);
+}
+
+
+.card-link{
+
+  font-family:var(--font-mono);
+
+  font-size:12px;
+
+  text-decoration:none;
+
+  color:var(--text);
+
+  border-bottom:1px solid var(--line);
+
+  align-self:flex-start;
+
+  padding-bottom:2px;
+
+  transition:
+    color .2s,
+    border-color .2s;
+}
+
+
+.card-link:hover{
+
+  color:var(--accent);
+
+  border-color:var(--accent);
+}
+
+
+
+/* =========================================================
+   VIDEO MODAL
+   ========================================================= */
+
+.video-modal{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(6,8,10,0.9);
+
+  z-index:200;
+
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:60px 24px 24px;
+}
+
+
+.video-modal.active{
+  display:flex;
+}
+
+
+.video-modal-inner{
+
+  position:relative;
+
+  width:100%;
+
+  max-width:960px;
+
+  aspect-ratio:16/9;
+
+  background:#000;
+
+  border:1px solid var(--line);
+}
+
+
+.video-modal-inner iframe,
+.video-modal-inner video{
+
+  width:100%;
+
+  height:100%;
+
+  border:0;
+}
+
+
+.video-modal-close{
+
+  position:absolute;
+
+  top:-42px;
+
+  right:0;
+
+  background:none;
+
+  border:1px solid var(--line);
+
+  color:var(--text);
+
+  font-family:var(--font-mono);
+
+  font-size:12px;
+
+  text-transform:uppercase;
+
+  letter-spacing:0.05em;
+
+  padding:9px 16px;
+
+  cursor:pointer;
+
+  transition:
+    border-color .2s,
+    color .2s;
+}
+
+
+.video-modal-close:hover,
+.video-modal-close:focus-visible{
+
+  border-color:var(--accent);
+
+  color:var(--accent);
+}
+
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-grid{
+
+  display:grid;
+
+  grid-template-columns:1.1fr 1fr;
+
+  gap:48px;
+
+  align-items:start;
+}
+
+
+.about-text p{
+
+  color:var(--text-muted);
+
+  margin-bottom:16px;
+
+  max-width:60ch;
+}
+
+
+.about-text strong{
+
+  color:var(--text);
+
+  font-weight:600;
+}
+
+
+.skill-panel{
+
+  background:var(--bg-panel);
+
+  border:1px solid var(--line);
+
+  padding:26px;
+}
+
+
+.skill-panel .hud-label{
+
+  display:block;
+
+  margin-bottom:18px;
+}
+
+
+.skill-row{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  padding:10px 0;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:14px;
+}
+
+
+.skill-row:last-child{
+  border-bottom:none;
+}
+
+
+.skill-row span:last-child{
+
+  font-family:var(--font-mono);
+
+  font-size:12px;
+
+  color:var(--text-muted);
+}
+
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-panel{
+
+  padding:56px 48px;
+
+  text-align:center;
+
+  position:relative;
+}
+
+
+.contact-panel h2{
+
+  font-family:var(--font-display);
+
+  font-size:clamp(26px,4vw,38px);
+
+  margin-bottom:16px;
+}
+
+
+.contact-panel p{
+
+  color:var(--text-muted);
+
+  max-width:460px;
+
+  margin:0 auto 30px;
+}
+
+
+.contact-links{
+
+  display:flex;
+
+  gap:18px;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
+}
+
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+
+  border-top:1px solid var(--line);
+
+  padding:26px 0;
+
+  font-family:var(--font-mono);
+
+  font-size:11.5px;
+
+  color:var(--text-muted);
+
+  display:flex;
+
+  justify-content:space-between;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width:760px){
 
   .nav-links{
-    display:flex;
-    gap: 32px;
-
-    list-style:none;
-
-    font-family: var(--font-mono);
-    font-size: 13px;
-
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    display:none;
   }
 
 
-  .nav-links a{
-    text-decoration:none;
-    color: var(--text-muted);
+  .grid,
+  .about-grid{
 
-    transition: color .2s;
-
-    position: relative;
+    grid-template-columns:1fr;
   }
 
 
-  .nav-links a:hover,
-  .nav-links a:focus-visible{
-    color: var(--text);
-  }
+  .hero-inner,
+  .contact-panel{
 
-
-  .nav-links a::after{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:-4px;
-
-    width:0;
-    height:1px;
-
-    background: var(--accent);
-
-    transition: width .2s;
-  }
-
-
-  .nav-links a:hover::after{
-    width:100%;
-  }
-
-
-  /* ---------- Hero ---------- */
-
-  .hero{
-    padding: 90px 0 70px;
-  }
-
-
-  .hero-inner{
-    padding: 56px 48px;
-
-    position:relative;
-  }
-
-
-  .hero-tag{
-    margin-bottom: 22px;
-  }
-
-
-  .hero h1{
-    font-family: var(--font-display);
-    font-weight: 600;
-
-    font-size: clamp(34px, 5vw, 58px);
-    line-height: 1.08;
-
-    max-width: 780px;
-
-    letter-spacing: -0.01em;
-  }
-
-
-  .hero h1 em{
-    font-style: normal;
-    color: var(--accent);
-  }
-
-
-  .hero p.lead{
-    margin-top: 22px;
-
-    max-width: 560px;
-
-    color: var(--text-muted);
-
-    font-size: 17px;
-  }
-
-
-  .hero-actions{
-    margin-top: 36px;
-
-    display:flex;
-    gap: 16px;
-
-    flex-wrap: wrap;
-  }
-
-
-  .btn{
-    font-family: var(--font-mono);
-    font-size: 13px;
-
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-
-    padding: 13px 24px;
-
-    text-decoration: none;
-
-    border-radius: var(--radius);
-
-    display:inline-flex;
-    align-items:center;
-
-    gap: 8px;
-
-    transition:
-      transform .15s,
-      background .2s,
-      border-color .2s;
-  }
-
-
-  .btn-primary{
-    background: var(--accent);
-    color: #06171A;
-
-    border: 1px solid var(--accent);
-
-    font-weight: 600;
-  }
-
-
-  .btn-primary:hover{
-    transform: translateY(-2px);
-  }
-
-
-  .btn-ghost{
-    border: 1px solid var(--line);
-    color: var(--text);
-  }
-
-
-  .btn-ghost:hover{
-    border-color: var(--accent);
-    color: var(--accent);
+    padding:40px 24px;
   }
 
 
   .hero-coords{
-    position:absolute;
+    display:none;
+  }
 
-    bottom: 18px;
-    right: 24px;
+}
 
-    font-family: var(--font-mono);
-    font-size: 11px;
 
-    color: var(--text-muted);
 
-    letter-spacing: 0.05em;
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
   }
 
 
-  /* ---------- Section shell ---------- */
-
-  section{
-    padding: 70px 0;
+  *{
+    transition:none !important;
   }
 
 
-  .section-head{
-    display:flex;
-
-    align-items: baseline;
-
-    gap: 16px;
-
-    margin-bottom: 40px;
+  .bg-icon{
+    animation:none !important;
   }
 
+}
 
-  .section-num{
-    font-family: var(--font-mono);
 
-    color: var(--accent);
+:focus-visible{
 
-    font-size: 13px;
-  }
+  outline:2px solid var(--accent);
 
-
-  .section-title{
-    font-family: var(--font-display);
-
-    font-size: 28px;
-
-    font-weight: 600;
-  }
-
-
-  .section-rule{
-    flex:1;
-
-    height:1px;
-
-    background: var(--line);
-  }
-
-
-  /* ---------- Projects ---------- */
-
-  .grid{
-    display:grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 24px;
-  }
-
-
-  .card{
-
-    /* IMPORTANT:
-       Le card stanno sopra alle icone flottanti.
-    */
-    position: relative;
-    z-index: 1;
-
-    background: var(--bg-panel);
-
-    border: 1px solid var(--line);
-
-    padding: 26px;
-
-    display:flex;
-    flex-direction:column;
-
-    gap: 14px;
-
-    transition:
-      border-color .2s,
-      transform .2s;
-  }
-
-
-  .card:hover,
-  .card:focus-within{
-    border-color: var(--accent-dim);
-
-    transform: translateY(-3px);
-  }
-
-
-  .card-media{
-    aspect-ratio: 16/9;
-
-    background: var(--bg-panel-2);
-
-    border: 1px dashed var(--line);
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-family: var(--font-mono);
-
-    font-size: 11px;
-
-    color: var(--text-muted);
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.08em;
-
-    overflow: hidden;
-
-    position: relative;
-
-    cursor: pointer;
-  }
-
-
-  .card-media video,
-  .card-media img{
-    width:100%;
-    height:100%;
-
-    object-fit: cover;
-  }
-
-
-  /* ---------- Video modal ---------- */
-
-  .video-modal{
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(6,8,10,0.9);
-
-    z-index: 200;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 60px 24px 24px;
-  }
-
-
-  .video-modal.active{
-    display: flex;
-  }
-
-
-  .video-modal-inner{
-    position: relative;
-
-    width: 100%;
-
-    max-width: 960px;
-
-    aspect-ratio: 16/9;
-
-    background: #000;
-
-    border: 1px solid var(--line);
-  }
-
-
-  .video-modal-inner iframe,
-  .video-modal-inner video{
-    width: 100%;
-    height: 100%;
-
-    border: 0;
-  }
-
-
-  .video-modal-close{
-    position: absolute;
-
-    top: -42px;
-    right: 0;
-
-    background: none;
-
-    border: 1px solid var(--line);
-
-    color: var(--text);
-
-    font-family: var(--font-mono);
-
-    font-size: 12px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.05em;
-
-    padding: 9px 16px;
-
-    cursor: pointer;
-
-    transition:
-      border-color .2s,
-      color .2s;
-  }
-
-
-  .video-modal-close:hover,
-  .video-modal-close:focus-visible{
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-
-  .card-top{
-    display:flex;
-
-    justify-content: space-between;
-    align-items:flex-start;
-
-    gap: 12px;
-  }
-
-
-  .card h3{
-    font-family: var(--font-display);
-
-    font-size: 19px;
-
-    font-weight: 600;
-  }
-
-
-  .card-year{
-    font-family: var(--font-mono);
-
-    font-size: 11px;
-
-    color: var(--text-muted);
-
-    white-space:nowrap;
-
-    margin-top: 4px;
-  }
-
-
-  .card p{
-    color: var(--text-muted);
-
-    font-size: 14.5px;
-  }
-
-
-  .tags{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap: 8px;
-
-    margin-top: auto;
-  }
-
-
-  .tag{
-    font-family: var(--font-mono);
-
-    font-size: 10.5px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.06em;
-
-    color: var(--accent);
-
-    border: 1px solid var(--accent-dim);
-
-    padding: 4px 9px;
-
-    border-radius: var(--radius);
-  }
-
-
-  .card-link{
-    font-family: var(--font-mono);
-
-    font-size: 12px;
-
-    text-decoration: none;
-
-    color: var(--text);
-
-    border-bottom: 1px solid var(--line);
-
-    align-self: flex-start;
-
-    padding-bottom: 2px;
-
-    transition:
-      color .2s,
-      border-color .2s;
-  }
-
-
-  .card-link:hover{
-    color: var(--accent);
-
-    border-color: var(--accent);
-  }
-
-
-  /* ---------- About ---------- */
-
-  .about-grid{
-    display:grid;
-
-    grid-template-columns: 1.1fr 1fr;
-
-    gap: 48px;
-
-    align-items:start;
-  }
-
-
-  .about-text p{
-    color: var(--text-muted);
-
-    margin-bottom: 16px;
-
-    max-width: 60ch;
-  }
-
-
-  .about-text strong{
-    color: var(--text);
-
-    font-weight: 600;
-  }
-
-
-  .skill-panel{
-    background: var(--bg-panel);
-
-    border: 1px solid var(--line);
-
-    padding: 26px;
-  }
-
-
-  .skill-panel .hud-label{
-    display:block;
-
-    margin-bottom: 18px;
-  }
-
-
-  .skill-row{
-    display:flex;
-
-    justify-content: space-between;
-
-    padding: 10px 0;
-
-    border-bottom: 1px solid var(--line);
-
-    font-size: 14px;
-  }
-
-
-  .skill-row:last-child{
-    border-bottom:none;
-  }
-
-
-  .skill-row span:last-child{
-    font-family: var(--font-mono);
-
-    font-size: 12px;
-
-    color: var(--text-muted);
-  }
-
-
-  /* ---------- Contact ---------- */
-
-  .contact-panel{
-    padding: 56px 48px;
-
-    text-align:center;
-
-    position:relative;
-  }
-
-
-  .contact-panel h2{
-    font-family: var(--font-display);
-
-    font-size: clamp(26px, 4vw, 38px);
-
-    margin-bottom: 16px;
-  }
-
-
-  .contact-panel p{
-    color: var(--text-muted);
-
-    max-width: 460px;
-
-    margin: 0 auto 30px;
-  }
-
-
-  .contact-links{
-    display:flex;
-
-    gap: 18px;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-  }
-
-
-  footer{
-    border-top: 1px solid var(--line);
-
-    padding: 26px 0;
-
-    font-family: var(--font-mono);
-
-    font-size: 11.5px;
-
-    color: var(--text-muted);
-
-    display:flex;
-
-    justify-content: space-between;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-  }
-
-
-  /* ---------- Responsive ---------- */
-
-  @media (max-width: 760px){
-
-    .nav-links{
-      display:none;
-    }
-
-
-    .grid,
-    .about-grid{
-      grid-template-columns: 1fr;
-    }
-
-
-    .hero-inner,
-    .contact-panel{
-      padding: 40px 24px;
-    }
-
-
-    .hero-coords{
-      display:none;
-    }
-
-  }
-
-
-  /* ---------- Reduced motion ---------- */
-
-  @media (prefers-reduced-motion: reduce){
-
-    html{
-      scroll-behavior: auto;
-    }
-
-
-    *{
-      transition: none !important;
-    }
-
-
-    .bg-icon{
-      animation: none !important;
-    }
-
-  }
-
-
-  :focus-visible{
-    outline: 2px solid var(--accent);
-
-    outline-offset: 2px;
-  }
+  outline-offset:2px;
+}
 
 </style>
 </head>
+
 
 
 <body>
@@ -1113,14 +1356,12 @@
 <div class="bg-icons" aria-hidden="true">
 
 
-  <!-- Icon 1 -->
+  <!-- ICON 1 -->
+
   <span class="bg-icon bg-icon-1">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <path
         d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"
@@ -1139,14 +1380,13 @@
   </span>
 
 
-  <!-- Icon 2 -->
+
+  <!-- ICON 2 -->
+
   <span class="bg-icon bg-icon-2">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <path
         d="M8 5L3 12l5 7M16 5l5 7-5 7"
@@ -1161,14 +1401,13 @@
   </span>
 
 
-  <!-- Icon 3 -->
+
+  <!-- ICON 3 -->
+
   <span class="bg-icon bg-icon-3">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <path
         d="M3 9h18v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"
@@ -1188,14 +1427,13 @@
   </span>
 
 
-  <!-- Icon 4 -->
+
+  <!-- ICON 4 -->
+
   <span class="bg-icon bg-icon-4">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <rect
         x="2"
@@ -1226,14 +1464,13 @@
   </span>
 
 
-  <!-- Icon 5 -->
+
+  <!-- ICON 5 -->
+
   <span class="bg-icon bg-icon-5">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <circle
         cx="5"
@@ -1286,14 +1523,13 @@
   </span>
 
 
-  <!-- Icon 6 -->
+
+  <!-- ICON 6 -->
+
   <span class="bg-icon bg-icon-6">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <circle
         cx="12"
@@ -1315,14 +1551,13 @@
   </span>
 
 
-  <!-- Icon 7 -->
+
+  <!-- ICON 7 -->
+
   <span class="bg-icon bg-icon-7">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <path
         d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"
@@ -1341,14 +1576,13 @@
   </span>
 
 
-  <!-- Icon 8 -->
+
+  <!-- ICON 8 -->
+
   <span class="bg-icon bg-icon-8">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <path
         d="M8 5L3 12l5 7M16 5l5 7-5 7"
@@ -1363,14 +1597,13 @@
   </span>
 
 
-  <!-- Icon 9 -->
+
+  <!-- ICON 9 -->
+
   <span class="bg-icon bg-icon-9">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <rect
         x="2"
@@ -1401,14 +1634,13 @@
   </span>
 
 
-  <!-- Icon 10 -->
+
+  <!-- ICON 10 -->
+
   <span class="bg-icon bg-icon-10">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <circle
         cx="12"
@@ -1430,14 +1662,13 @@
   </span>
 
 
-  <!-- Icon 11 -->
+
+  <!-- ICON 11 -->
+
   <span class="bg-icon bg-icon-11">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <circle
         cx="5"
@@ -1490,14 +1721,13 @@
   </span>
 
 
-  <!-- Icon 12 -->
+
+  <!-- ICON 12 -->
+
   <span class="bg-icon bg-icon-12">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
 
       <path
         d="M3 9h18v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"
@@ -1517,6 +1747,7 @@
   </span>
 
 </div>
+
 
 
 <!-- =========================================================
@@ -1559,567 +1790,750 @@
 </header>
 
 
+
 <main>
 
 
-  <!-- =======================================================
-       HERO
-       ======================================================= -->
 
-  <section class="hero">
+<!-- =========================================================
+     HERO
+     ========================================================= -->
 
-    <div class="wrap">
+<section class="hero">
 
-      <div class="viewport hero-inner">
+  <div class="wrap">
 
-        <div class="b2"></div>
+    <div class="viewport hero-inner">
 
-
-        <div class="hud-label hero-tag">
-          // technical art &amp; graphics development
-        </div>
+      <div class="b2"></div>
 
 
-        <h1>
-          Unisco codice e immagine:
-          rendering <em>real-time</em>,
-          VFX e pipeline grafiche.
-        </h1>
+      <div class="hud-label hero-tag">
+        // technical art &amp; graphics development
+      </div>
 
 
-        <p class="lead">
-          Technical Artist e Graphics Developer —
-          C++, Unity, shader, compositing VFX.
-        </p>
+      <h1>
+        Unisco codice e immagine:
+        rendering <em>real-time</em>,
+        VFX e pipeline grafiche.
+      </h1>
 
 
-        <div class="hero-actions">
-
-          <a
-            href="#progetti"
-            class="btn btn-primary"
-          >
-            Vedi i progetti
-          </a>
+      <p class="lead">
+        Technical Artist e Graphics Developer —
+        C++, Unity, shader, compositing VFX.
+      </p>
 
 
-          <a
-            href="asset/cv-tommaso.pdf"
-            class="btn btn-ghost"
-          >
-            Scarica CV
-          </a>
+      <div class="hero-actions">
 
-        </div>
+        <a
+          href="#progetti"
+          class="btn btn-primary"
+        >
+          Vedi i progetti
+        </a>
 
 
-        <div class="hero-coords">
-          X:0.00 Y:1.00 Z:0.00
-        </div>
+        <a
+          href="asset/cv-tommaso.pdf"
+          class="btn btn-ghost"
+        >
+          Scarica CV
+        </a>
 
+      </div>
+
+
+      <div class="hero-coords">
+        X:0.00 Y:1.00 Z:0.00
       </div>
 
     </div>
 
-  </section>
+  </div>
 
+</section>
 
-  <!-- =======================================================
-       PROJECTS
-       ======================================================= -->
 
-  <section id="progetti">
 
-    <div class="wrap">
+<!-- =========================================================
+     PROJECTS
+     ========================================================= -->
 
+<section id="progetti">
 
-      <div class="section-head">
+  <div class="wrap">
 
-        <span class="section-num">
-          01
-        </span>
 
-        <h2 class="section-title">
-          Progetti
-        </h2>
+    <div class="section-head">
 
-        <div class="section-rule"></div>
+      <span class="section-num">
+        01
+      </span>
 
-      </div>
+      <h2 class="section-title">
+        Progetti
+      </h2>
 
-
-      <div class="grid">
-
-
-        <!-- Chemical Cronicles -->
-
-        <article class="card">
-
-
-          <div
-            class="card-media"
-            data-youtube="fwJb4QYb_0Q"
-            role="button"
-            tabindex="0"
-            aria-label="Guarda su YouTube: Chemical Cronicles"
-          >
-
-            <video
-              class="preview-video"
-              src="asset/Chemical%20Cronicles.mp4"
-              autoplay
-              muted
-              loop
-              playsinline
-            ></video>
-
-          </div>
-
-
-          <div class="card-top">
-
-            <h3>
-              Chemical Cronicles
-            </h3>
-
-            <span class="card-year">
-              2023–2025
-            </span>
-
-          </div>
-
-
-          <p>
-            Demo di un videogioco sviluppato in Unity,
-            con meccaniche di gameplay e livello giocabile.
-          </p>
-
-
-          <div class="tags">
-
-            <span class="tag">
-              Unity
-            </span>
-
-            <span class="tag">
-              C#
-            </span>
-
-            <span class="tag">
-              Game Design
-            </span>
-
-          </div>
-
-
-          <a
-            href="https://www.youtube.com/watch?v=fwJb4QYb_0Q"
-            class="card-link"
-            target="_blank"
-            rel="noopener"
-          >
-            Vedi il progetto →
-          </a>
-
-        </article>
-
-
-        <!-- NeonSkies -->
-
-        <article class="card">
-
-
-          <div
-            class="card-media"
-            data-youtube="a0h3NOdOGj4"
-            role="button"
-            tabindex="0"
-            aria-label="Guarda su YouTube: NeonSkies"
-          >
-
-            <video
-              class="preview-video"
-              src="asset/NeonSkies.mov"
-              autoplay
-              muted
-              loop
-              playsinline
-            ></video>
-
-          </div>
-
-
-          <div class="card-top">
-
-            <h3>
-              NeonSkies
-            </h3>
-
-            <span class="card-year">
-              2023–2025
-            </span>
-
-          </div>
-
-
-          <p>
-            Piccolo videogioco sviluppato interamente
-            su un motore grafico custom in OpenGL.
-          </p>
-
-
-          <div class="tags">
-
-            <span class="tag">
-              C++
-            </span>
-
-            <span class="tag">
-              OpenGL
-            </span>
-
-            <span class="tag">
-              Game Dev
-            </span>
-
-          </div>
-
-
-          <a
-            href="https://youtu.be/a0h3NOdOGj4"
-            class="card-link"
-            target="_blank"
-            rel="noopener"
-          >
-            Vedi il progetto →
-          </a>
-
-        </article>
-
-
-        <!-- Coca-Cola -->
-
-        <article class="card">
-
-
-          <div
-            class="card-media"
-            data-youtube="cQ1yuRKbnRs"
-            role="button"
-            tabindex="0"
-            aria-label="Guarda su YouTube: Coca-Cola"
-          >
-
-            <video
-              class="preview-video"
-              src="asset/Coca-Cola.mov"
-              autoplay
-              muted
-              loop
-              playsinline
-            ></video>
-
-          </div>
-
-
-          <div class="card-top">
-
-            <h3>
-              Coca-Cola
-            </h3>
-
-            <span class="card-year">
-              2023–2025
-            </span>
-
-          </div>
-
-
-          <p>
-            Ricostruzione animata di uno spot pubblicitario
-            Coca-Cola, realizzata interamente in Blender.
-          </p>
-
-
-          <div class="tags">
-
-            <span class="tag">
-              Blender
-            </span>
-
-            <span class="tag">
-              Animazione
-            </span>
-
-            <span class="tag">
-              VFX
-            </span>
-
-          </div>
-
-
-          <a
-            href="https://youtu.be/cQ1yuRKbnRs"
-            class="card-link"
-            target="_blank"
-            rel="noopener"
-          >
-            Vedi il progetto →
-          </a>
-
-        </article>
-
-
-        <!-- Varang -->
-
-        <article class="card">
-
-
-          <div
-            class="card-media"
-            data-youtube="dXTHQsCUC-o"
-            role="button"
-            tabindex="0"
-            aria-label="Guarda su YouTube: Varang"
-          >
-
-            <video
-              class="preview-video"
-              src="asset/Varang.mov"
-              autoplay
-              muted
-              loop
-              playsinline
-            ></video>
-
-          </div>
-
-
-          <div class="card-top">
-
-            <h3>
-              Varang
-            </h3>
-
-            <span class="card-year">
-              2023–2025
-            </span>
-
-          </div>
-
-
-          <p>
-            Cortometraggio d'animazione realizzato in Blender
-            con tecnica Grease Pencil.
-          </p>
-
-
-          <div class="tags">
-
-            <span class="tag">
-              Blender
-            </span>
-
-            <span class="tag">
-              Grease Pencil
-            </span>
-
-            <span class="tag">
-              Animazione
-            </span>
-
-          </div>
-
-
-          <a
-            href="https://youtu.be/dXTHQsCUC-o"
-            class="card-link"
-            target="_blank"
-            rel="noopener"
-          >
-            Vedi il progetto →
-          </a>
-
-        </article>
-
-
-      </div>
+      <div class="section-rule"></div>
 
     </div>
 
-  </section>
 
 
-  <!-- =======================================================
-       ABOUT
-       ======================================================= -->
-
-  <section id="chi-sono">
-
-    <div class="wrap">
+    <div class="grid">
 
 
-      <div class="section-head">
 
-        <span class="section-num">
-          02
-        </span>
+      <!-- ===================================================
+           CHEMICAL CRONICLES
+           =================================================== -->
 
-        <h2 class="section-title">
-          Chi sono
-        </h2>
-
-        <div class="section-rule"></div>
-
-      </div>
+      <article class="card">
 
 
-      <div class="about-grid">
+        <div
+          class="card-media"
+          data-youtube="fwJb4QYb_0Q"
+          role="button"
+          tabindex="0"
+          aria-label="Guarda Chemical Cronicles"
+        >
 
-
-        <div class="about-text">
-
-          <p>
-            Laureato in <strong>Informatica</strong> e successivamente in
-            <strong>Ingegneria del Cinema e dei Mezzi di Comunicazione</strong>
-            al Politecnico di Torino. Lavoro all'intersezione tra rendering
-            real-time, VFX compositing e sviluppo software, con motori di gioco
-            moderni, C++/OpenGL e strumenti assistiti dall'AI.
-          </p>
-
-
-          <p>
-            Tra i miei ambiti: shader e pipeline grafiche, sistemi interattivi
-            in Unity, compositing VFX per prodotti audiovisivi e modelli di
-            machine learning in Python. Attualmente in cerca di opportunità
-            nello sviluppo Unity/VR/AR nel Nord Italia.
-          </p>
+          <video
+            class="preview-video"
+            src="asset/Chemical%20Cronicles.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
 
         </div>
 
 
-        <div class="skill-panel viewport">
+        <div class="card-top">
 
-          <div class="b2"></div>
+          <h3>
+            Chemical Cronicles
+          </h3>
 
-
-          <span class="hud-label">
-            // stack
+          <span class="card-year">
+            2023–2025
           </span>
 
-
-          <div class="skill-row">
-
-            <span>
-              C++ / OpenGL
-            </span>
-
-            <span>
-              Motori &amp; shader
-            </span>
-
-          </div>
-
-
-          <div class="skill-row">
-
-            <span>
-              Unity / C#
-            </span>
-
-            <span>
-              Sistemi interattivi
-            </span>
-
-          </div>
-
-
-          <div class="skill-row">
-
-            <span>
-              Nuke / After Effects
-            </span>
-
-            <span>
-              VFX compositing
-            </span>
-
-          </div>
-
-
-          <div class="skill-row">
-
-            <span>
-              Python
-            </span>
-
-            <span>
-              ML &amp; analisi dati
-            </span>
-
-          </div>
-
-
         </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       CONTACT
-       ======================================================= -->
-
-  <section id="contatti">
-
-    <div class="wrap">
-
-
-      <div class="viewport contact-panel">
-
-        <div class="b2"></div>
-
-
-        <h2>
-          Parliamone.
-        </h2>
 
 
         <p>
-          Sono disponibile per collaborazioni e opportunità
-          nello sviluppo Unity/VR/AR.
+          Demo di un videogioco sviluppato in Unity,
+          con meccaniche di gameplay e livello giocabile.
         </p>
 
 
-        <div class="contact-links">
+        <div class="tags">
+
+          <span class="tag">
+            Unity
+          </span>
+
+          <span class="tag">
+            C#
+          </span>
+
+          <span class="tag">
+            Game Design
+          </span>
+
+        </div>
 
 
-          <a
-            href="mailto:tuaemail@example.com"
-            class="btn btn-primary"
-          >
-            Scrivimi
-          </a>
+        <a
+          href="https://youtu.be/fwJb4QYb_0Q"
+          class="card-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Vedi il progetto →
+        </a>
+
+      </article>
 
 
-          <a
-            href="https://linkedin.com/in/tuoprofilo"
-            class="btn btn-ghost"
-          >
-            LinkedIn
-          </a>
+
+      <!-- ===================================================
+           NEONSKIES
+           =================================================== -->
+
+      <article class="card">
 
 
-          <a
-            href="https://github.com/tuoprofilo"
-            class="btn btn-ghost"
-          >
-            GitHub
-          </a>
+        <div
+          class="card-media"
+          data-youtube="a0h3NOdOGj4"
+          role="button"
+          tabindex="0"
+          aria-label="Guarda NeonSkies"
+        >
 
+          <video
+            class="preview-video"
+            src="asset/NeonSkies.mov"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+        </div>
+
+
+        <div class="card-top">
+
+          <h3>
+            NeonSkies
+          </h3>
+
+          <span class="card-year">
+            2023–2025
+          </span>
+
+        </div>
+
+
+        <p>
+          Piccolo videogioco sviluppato interamente
+          su un motore grafico custom in OpenGL.
+        </p>
+
+
+        <div class="tags">
+
+          <span class="tag">
+            C++
+          </span>
+
+          <span class="tag">
+            OpenGL
+          </span>
+
+          <span class="tag">
+            Game Dev
+          </span>
+
+        </div>
+
+
+        <a
+          href="https://youtu.be/a0h3NOdOGj4"
+          class="card-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Vedi il progetto →
+        </a>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           COCA-COLA
+           =================================================== -->
+
+      <article class="card">
+
+
+        <div
+          class="card-media"
+          data-youtube="cQ1yuRKbnRs"
+          role="button"
+          tabindex="0"
+          aria-label="Guarda Coca-Cola"
+        >
+
+          <video
+            class="preview-video"
+            src="asset/Coca-Cola.mov"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+        </div>
+
+
+        <div class="card-top">
+
+          <h3>
+            Coca-Cola
+          </h3>
+
+          <span class="card-year">
+            2023–2025
+          </span>
+
+        </div>
+
+
+        <p>
+          Ricostruzione animata di uno spot pubblicitario
+          Coca-Cola, realizzata interamente in Blender.
+        </p>
+
+
+        <div class="tags">
+
+          <span class="tag">
+            Blender
+          </span>
+
+          <span class="tag">
+            Animazione
+          </span>
+
+          <span class="tag">
+            VFX
+          </span>
+
+        </div>
+
+
+        <a
+          href="https://youtu.be/cQ1yuRKbnRs"
+          class="card-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Vedi il progetto →
+        </a>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           VARANG
+           =================================================== -->
+
+      <article class="card">
+
+
+        <div
+          class="card-media"
+          data-youtube="dXTHQsCUC-o"
+          role="button"
+          tabindex="0"
+          aria-label="Guarda Varang"
+        >
+
+          <video
+            class="preview-video"
+            src="asset/Varang.mov"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+        </div>
+
+
+        <div class="card-top">
+
+          <h3>
+            Varang
+          </h3>
+
+          <span class="card-year">
+            2023–2025
+          </span>
+
+        </div>
+
+
+        <p>
+          Cortometraggio d'animazione realizzato in Blender
+          con tecnica Grease Pencil.
+        </p>
+
+
+        <div class="tags">
+
+          <span class="tag">
+            Blender
+          </span>
+
+          <span class="tag">
+            Grease Pencil
+          </span>
+
+          <span class="tag">
+            Animazione
+          </span>
+
+        </div>
+
+
+        <a
+          href="https://youtu.be/dXTHQsCUC-o"
+          class="card-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Vedi il progetto →
+        </a>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           HAMBURGER
+           =================================================== -->
+
+      <article class="card">
+
+
+        <div
+          class="card-media"
+          data-youtube="MJMFYRn45XI"
+          role="button"
+          tabindex="0"
+          aria-label="Guarda Hamburger"
+        >
+
+          <video
+            class="preview-video"
+            src="asset/Hamburger.mov"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+        </div>
+
+
+        <div class="card-top">
+
+          <h3>
+            Hamburger
+          </h3>
+
+          <span class="card-year">
+            2025
+          </span>
+
+        </div>
+
+
+        <p>
+          Animazione di motion graphic 2D realizzata
+          in After Effects, con un approccio grafico
+          semplice e dinamico.
+        </p>
+
+
+        <div class="tags">
+
+          <span class="tag">
+            After Effects
+          </span>
+
+          <span class="tag">
+            Motion Graphics
+          </span>
+
+          <span class="tag">
+            2D
+          </span>
+
+        </div>
+
+
+        <a
+          href="https://youtu.be/MJMFYRn45XI"
+          class="card-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Vedi il progetto →
+        </a>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           THE DRAGON
+           =================================================== -->
+
+      <article class="card">
+
+
+        <div
+          class="card-media"
+          data-youtube="AtnJdO3On9U"
+          role="button"
+          tabindex="0"
+          aria-label="Guarda The Dragon"
+        >
+
+          <video
+            class="preview-video"
+            src="asset/The%20Dragon.mov"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+        </div>
+
+
+        <div class="card-top">
+
+          <h3>
+            The Dragon
+          </h3>
+
+          <span class="card-year">
+            2025
+          </span>
+
+        </div>
+
+
+        <p>
+          Video con effetti visivi realizzato attraverso
+          una pipeline di compositing con Nuke e After Effects.
+        </p>
+
+
+        <div class="tags">
+
+          <span class="tag">
+            Nuke
+          </span>
+
+          <span class="tag">
+            After Effects
+          </span>
+
+          <span class="tag">
+            VFX
+          </span>
+
+        </div>
+
+
+        <a
+          href="https://youtu.be/AtnJdO3On9U"
+          class="card-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Vedi il progetto →
+        </a>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           THESIS
+           =================================================== -->
+
+      <article class="card">
+
+
+        <div
+          class="card-media"
+          data-youtube="zssb9LmTdrQ"
+          role="button"
+          tabindex="0"
+          aria-label="Guarda Thesis"
+        >
+
+          <video
+            class="preview-video"
+            src="asset/Thesis.mov"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+        </div>
+
+
+        <div class="card-top">
+
+          <h3>
+            Thesis
+          </h3>
+
+          <span class="card-year">
+            2025
+          </span>
+
+        </div>
+
+
+        <p>
+          Tesi di laurea dedicata allo sviluppo di
+          un'esperienza di training in realtà virtuale
+          per l'apprendimento delle procedure antincendio.
+        </p>
+
+
+        <div class="tags">
+
+          <span class="tag">
+            Unity
+          </span>
+
+          <span class="tag">
+            VR
+          </span>
+
+          <span class="tag">
+            C#
+          </span>
+
+        </div>
+
+
+        <a
+          href="https://youtu.be/zssb9LmTdrQ"
+          class="card-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Vedi il progetto →
+        </a>
+
+      </article>
+
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+     ========================================================= -->
+
+<section id="chi-sono">
+
+  <div class="wrap">
+
+
+    <div class="section-head">
+
+      <span class="section-num">
+        02
+      </span>
+
+      <h2 class="section-title">
+        Chi sono
+      </h2>
+
+      <div class="section-rule"></div>
+
+    </div>
+
+
+    <div class="about-grid">
+
+
+      <div class="about-text">
+
+        <p>
+          Laureato in <strong>Informatica</strong> e successivamente in
+          <strong>Ingegneria del Cinema e dei Mezzi di Comunicazione</strong>
+          al Politecnico di Torino. Lavoro all'intersezione tra rendering
+          real-time, VFX compositing e sviluppo software, con motori di gioco
+          moderni, C++/OpenGL e strumenti assistiti dall'AI.
+        </p>
+
+
+        <p>
+          Tra i miei ambiti: shader e pipeline grafiche, sistemi interattivi
+          in Unity, compositing VFX per prodotti audiovisivi e modelli di
+          machine learning in Python.
+        </p>
+
+      </div>
+
+
+      <div class="skill-panel viewport">
+
+        <div class="b2"></div>
+
+
+        <span class="hud-label">
+          // stack
+        </span>
+
+
+        <div class="skill-row">
+
+          <span>
+            C++ / OpenGL
+          </span>
+
+          <span>
+            Motori &amp; shader
+          </span>
+
+        </div>
+
+
+        <div class="skill-row">
+
+          <span>
+            Unity / C#
+          </span>
+
+          <span>
+            Sistemi interattivi
+          </span>
+
+        </div>
+
+
+        <div class="skill-row">
+
+          <span>
+            Nuke / After Effects
+          </span>
+
+          <span>
+            VFX compositing
+          </span>
+
+        </div>
+
+
+        <div class="skill-row">
+
+          <span>
+            Python
+          </span>
+
+          <span>
+            ML &amp; analisi dati
+          </span>
 
         </div>
 
@@ -2127,10 +2541,72 @@
 
     </div>
 
-  </section>
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT
+     ========================================================= -->
+
+<section id="contatti">
+
+  <div class="wrap">
+
+    <div class="viewport contact-panel">
+
+      <div class="b2"></div>
+
+
+      <h2>
+        Parliamone.
+      </h2>
+
+
+      <p>
+        Sono disponibile per collaborazioni e opportunità
+        nello sviluppo Unity/VR/AR.
+      </p>
+
+
+      <div class="contact-links">
+
+        <a
+          href="mailto:tuaemail@example.com"
+          class="btn btn-primary"
+        >
+          Scrivimi
+        </a>
+
+
+        <a
+          href="https://linkedin.com/in/tuoprofilo"
+          class="btn btn-ghost"
+        >
+          LinkedIn
+        </a>
+
+
+        <a
+          href="https://github.com/tuoprofilo"
+          class="btn btn-ghost"
+        >
+          GitHub
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 </main>
+
 
 
 <!-- =========================================================
@@ -2148,6 +2624,7 @@
   </span>
 
 </footer>
+
 
 
 <!-- =========================================================
@@ -2185,132 +2662,129 @@
 </div>
 
 
+
 <!-- =========================================================
      JAVASCRIPT
      ========================================================= -->
 
 <script>
 
-  (function(){
+(function(){
 
-    var modal =
-      document.getElementById('videoModal');
-
-    var iframe =
-      document.getElementById('videoModalIframe');
+  var modal =
+    document.getElementById('videoModal');
 
 
-    function openModal(youtubeId){
-
-      if(!youtubeId) return;
-
-
-      iframe.src =
-        'https://www.youtube.com/embed/' +
-        youtubeId +
-        '?autoplay=1&rel=0';
+  var iframe =
+    document.getElementById('videoModalIframe');
 
 
-      modal.classList.add('active');
+  function openModal(youtubeId){
 
-    }
-
-
-    function closeModal(){
-
-      modal.classList.remove('active');
-
-      iframe.src = '';
-
-    }
+    if(!youtubeId) return;
 
 
-    document
-      .querySelectorAll('.card-media[data-youtube]')
-      .forEach(function(el){
+    iframe.src =
+      'https://www.youtube.com/embed/' +
+      youtubeId +
+      '?autoplay=1&rel=0';
 
 
-        el.addEventListener(
-          'click',
-          function(){
+    modal.classList.add('active');
+
+  }
+
+
+  function closeModal(){
+
+    modal.classList.remove('active');
+
+    iframe.src = '';
+
+  }
+
+
+  document
+    .querySelectorAll('.card-media[data-youtube]')
+    .forEach(function(el){
+
+      el.addEventListener(
+        'click',
+        function(){
+
+          openModal(
+            el.dataset.youtube
+          );
+
+        }
+      );
+
+
+      el.addEventListener(
+        'keydown',
+        function(e){
+
+          if(
+            e.key === 'Enter' ||
+            e.key === ' '
+          ){
+
+            e.preventDefault();
 
             openModal(
               el.dataset.youtube
             );
 
           }
-        );
 
-
-        el.addEventListener(
-          'keydown',
-          function(e){
-
-
-            if(
-              e.key === 'Enter' ||
-              e.key === ' '
-            ){
-
-              e.preventDefault();
-
-              openModal(
-                el.dataset.youtube
-              );
-
-            }
-
-          }
-        );
-
-
-      });
-
-
-    document
-      .getElementById('videoModalClose')
-      .addEventListener(
-        'click',
-        closeModal
+        }
       );
 
+    });
 
-    modal.addEventListener(
+
+  document
+    .getElementById('videoModalClose')
+    .addEventListener(
       'click',
-      function(e){
-
-        if(e.target === modal){
-
-          closeModal();
-
-        }
-
-      }
+      closeModal
     );
 
 
-    document.addEventListener(
-      'keydown',
-      function(e){
+  modal.addEventListener(
+    'click',
+    function(e){
 
-        if(
-          e.key === 'Escape' &&
-          modal.classList.contains('active')
-        ){
+      if(e.target === modal){
 
-          closeModal();
-
-        }
+        closeModal();
 
       }
-    );
+
+    }
+  );
 
 
-  })();
+  document.addEventListener(
+    'keydown',
+    function(e){
+
+      if(
+        e.key === 'Escape' &&
+        modal.classList.contains('active')
+      ){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+})();
 
 </script>
 
 
 </body>
 </html>
-```
