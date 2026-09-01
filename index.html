@@ -1,15 +1,16 @@
-```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tommaso — Portfolio</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+
   :root{
     --bg: #0E1116;
     --bg-panel: #161B22;
@@ -21,10 +22,12 @@
     --accent-dim: #2E5E5A;
     --accent-2: #F2A65A;
     --radius: 2px;
+
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
   }
+
 
   *{
     box-sizing: border-box;
@@ -32,32 +35,39 @@
     padding: 0;
   }
 
+
   html{
     scroll-behavior: smooth;
   }
+
 
   body{
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-body);
     line-height: 1.5;
+
     background-image:
       linear-gradient(var(--line) 1px, transparent 1px),
       linear-gradient(90deg, var(--line) 1px, transparent 1px);
+
     background-size: 48px 48px;
     background-position: -1px -1px;
     background-attachment: fixed;
   }
 
+
   a{
     color: inherit;
   }
+
 
   .wrap{
     max-width: 1120px;
     margin: 0 auto;
     padding: 0 28px;
   }
+
 
   /* ---------- Corner bracket / viewport signature ---------- */
 
@@ -68,45 +78,57 @@
     backdrop-filter: blur(2px);
   }
 
+
   .viewport::before,
   .viewport::after,
   .viewport .b2::before,
   .viewport .b2::after{
     content:"";
     position:absolute;
+
     width:18px;
     height:18px;
+
     border: 2px solid var(--accent);
     opacity: 0.85;
   }
 
+
   .viewport::before{
     top:-1px;
     left:-1px;
+
     border-right:none;
     border-bottom:none;
   }
+
 
   .viewport::after{
     top:-1px;
     right:-1px;
+
     border-left:none;
     border-bottom:none;
   }
 
+
   .viewport .b2::before{
     bottom:-1px;
     left:-1px;
+
     border-right:none;
     border-top:none;
   }
 
+
   .viewport .b2::after{
     bottom:-1px;
     right:-1px;
+
     border-left:none;
     border-top:none;
   }
+
 
   .hud-label{
     font-family: var(--font-mono);
@@ -116,21 +138,29 @@
     color: var(--accent);
   }
 
+
   /* ---------- Floating background icons ---------- */
 
   .bg-icons{
     position: fixed;
     inset: 0;
+
     z-index: 0;
+
     overflow: hidden;
     pointer-events: none;
   }
 
+
   .bg-icon{
     position: absolute;
+
     color: var(--accent);
-    opacity: 0.8;
+
+    /* Aumentata luminosità */
+    opacity: 0.30;
   }
+
 
   .bg-icon svg{
     width: 100%;
@@ -138,118 +168,162 @@
     display: block;
   }
 
+
   .bg-icon-1{
     top: 10%;
     left: 6%;
+
     width: 22px;
     height: 22px;
+
     animation: floatA 4.5s ease-in-out infinite;
   }
+
 
   .bg-icon-2{
     top: 18%;
     right: 9%;
+
     width: 30px;
     height: 30px;
+
     animation: floatB 5.5s ease-in-out infinite;
     animation-delay: -1.5s;
-    opacity: 0.18;
+
+    opacity: 0.25;
   }
+
 
   .bg-icon-3{
     top: 50%;
     left: 4%;
+
     width: 20px;
     height: 20px;
+
     animation: floatC 5s ease-in-out infinite;
     animation-delay: -2.5s;
   }
 
+
   .bg-icon-4{
     top: 64%;
     right: 7%;
+
     width: 24px;
     height: 24px;
+
     animation: floatA 6s ease-in-out infinite;
     animation-delay: -0.8s;
   }
 
+
   .bg-icon-5{
     top: 36%;
     left: 48%;
+
     width: 18px;
     height: 18px;
+
     animation: floatB 6.5s ease-in-out infinite;
     animation-delay: -3.5s;
-    opacity: 0.15;
+
+    opacity: 0.22;
   }
+
 
   .bg-icon-6{
     top: 82%;
     left: 30%;
+
     width: 22px;
     height: 22px;
+
     animation: floatC 5.2s ease-in-out infinite;
     animation-delay: -1.8s;
   }
 
+
   .bg-icon-7{
     top: 6%;
     left: 34%;
+
     width: 20px;
     height: 20px;
+
     animation: floatB 4.8s ease-in-out infinite;
     animation-delay: -2s;
   }
 
+
   .bg-icon-8{
     top: 30%;
     left: 16%;
+
     width: 26px;
     height: 26px;
+
     animation: floatA 5.8s ease-in-out infinite;
     animation-delay: -4s;
-    opacity: 0.17;
+
+    opacity: 0.24;
   }
+
 
   .bg-icon-9{
     top: 46%;
     right: 22%;
+
     width: 18px;
     height: 18px;
+
     animation: floatC 4.2s ease-in-out infinite;
     animation-delay: -1.2s;
   }
 
+
   .bg-icon-10{
     top: 74%;
     left: 12%;
+
     width: 24px;
     height: 24px;
+
     animation: floatB 6.2s ease-in-out infinite;
     animation-delay: -3s;
   }
 
+
   .bg-icon-11{
     top: 90%;
     right: 14%;
+
     width: 20px;
     height: 20px;
+
     animation: floatA 5s ease-in-out infinite;
     animation-delay: -0.5s;
-    opacity: 0.16;
+
+    opacity: 0.23;
   }
+
 
   .bg-icon-12{
     top: 58%;
     left: 62%;
+
     width: 22px;
     height: 22px;
+
     animation: floatC 6.8s ease-in-out infinite;
     animation-delay: -4.5s;
   }
 
+
+  /* ---------- Floating animations ---------- */
+
   @keyframes floatA{
+
     0%{
       transform: translate(0,0) rotate(0deg);
     }
@@ -265,9 +339,12 @@
     100%{
       transform: translate(0,0) rotate(0deg);
     }
+
   }
 
+
   @keyframes floatB{
+
     0%{
       transform: translate(0,0) rotate(0deg);
     }
@@ -283,9 +360,12 @@
     100%{
       transform: translate(0,0) rotate(0deg);
     }
+
   }
 
+
   @keyframes floatC{
+
     0%{
       transform: translate(0,0) scale(1);
     }
@@ -301,25 +381,33 @@
     100%{
       transform: translate(0,0) scale(1);
     }
+
   }
+
 
   /* ---------- Header ---------- */
 
   header{
     position: sticky;
     top: 0;
+
     z-index: 50;
+
     background: rgba(14,17,22,0.85);
     backdrop-filter: blur(8px);
+
     border-bottom: 1px solid var(--line);
   }
+
 
   .nav{
     display:flex;
     align-items:center;
     justify-content: space-between;
+
     padding: 18px 0;
   }
+
 
   .logo{
     font-family: var(--font-display);
@@ -328,46 +416,63 @@
     letter-spacing: 0.02em;
   }
 
+
   .logo span{
     color: var(--accent);
   }
 
+
   .nav-links{
     display:flex;
     gap: 32px;
+
     list-style:none;
+
     font-family: var(--font-mono);
     font-size: 13px;
+
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
+
   .nav-links a{
     text-decoration:none;
     color: var(--text-muted);
+
     transition: color .2s;
+
     position: relative;
   }
+
 
   .nav-links a:hover,
   .nav-links a:focus-visible{
     color: var(--text);
   }
 
+
   .nav-links a::after{
     content:"";
+
     position:absolute;
+
     left:0;
     bottom:-4px;
+
     width:0;
     height:1px;
+
     background: var(--accent);
+
     transition: width .2s;
   }
+
 
   .nav-links a:hover::after{
     width:100%;
   }
+
 
   /* ---------- Hero ---------- */
 
@@ -375,87 +480,125 @@
     padding: 90px 0 70px;
   }
 
+
   .hero-inner{
     padding: 56px 48px;
+
     position:relative;
   }
+
 
   .hero-tag{
     margin-bottom: 22px;
   }
 
+
   .hero h1{
     font-family: var(--font-display);
     font-weight: 600;
+
     font-size: clamp(34px, 5vw, 58px);
     line-height: 1.08;
+
     max-width: 780px;
+
     letter-spacing: -0.01em;
   }
+
 
   .hero h1 em{
     font-style: normal;
     color: var(--accent);
   }
 
+
   .hero p.lead{
     margin-top: 22px;
+
     max-width: 560px;
+
     color: var(--text-muted);
+
     font-size: 17px;
   }
 
+
   .hero-actions{
     margin-top: 36px;
+
     display:flex;
     gap: 16px;
+
     flex-wrap: wrap;
   }
+
 
   .btn{
     font-family: var(--font-mono);
     font-size: 13px;
+
     letter-spacing: 0.05em;
     text-transform: uppercase;
+
     padding: 13px 24px;
+
     text-decoration: none;
+
     border-radius: var(--radius);
+
     display:inline-flex;
     align-items:center;
+
     gap: 8px;
-    transition: transform .15s, background .2s, border-color .2s;
+
+    transition:
+      transform .15s,
+      background .2s,
+      border-color .2s;
   }
+
 
   .btn-primary{
     background: var(--accent);
     color: #06171A;
+
     border: 1px solid var(--accent);
+
     font-weight: 600;
   }
+
 
   .btn-primary:hover{
     transform: translateY(-2px);
   }
+
 
   .btn-ghost{
     border: 1px solid var(--line);
     color: var(--text);
   }
 
+
   .btn-ghost:hover{
     border-color: var(--accent);
     color: var(--accent);
   }
 
+
   .hero-coords{
     position:absolute;
+
     bottom: 18px;
     right: 24px;
+
     font-family: var(--font-mono);
     font-size: 11px;
+
     color: var(--text-muted);
+
     letter-spacing: 0.05em;
   }
+
 
   /* ---------- Section shell ---------- */
 
@@ -463,127 +606,206 @@
     padding: 70px 0;
   }
 
+
   .section-head{
     display:flex;
+
     align-items: baseline;
+
     gap: 16px;
+
     margin-bottom: 40px;
   }
 
+
   .section-num{
     font-family: var(--font-mono);
+
     color: var(--accent);
+
     font-size: 13px;
   }
 
+
   .section-title{
     font-family: var(--font-display);
+
     font-size: 28px;
+
     font-weight: 600;
   }
 
+
   .section-rule{
     flex:1;
+
     height:1px;
+
     background: var(--line);
   }
+
 
   /* ---------- Projects ---------- */
 
   .grid{
     display:grid;
+
     grid-template-columns: repeat(2, 1fr);
+
     gap: 24px;
   }
 
+
   .card{
+
+    /* IMPORTANT:
+       Le card stanno sopra alle icone flottanti.
+    */
+    position: relative;
+    z-index: 1;
+
     background: var(--bg-panel);
+
     border: 1px solid var(--line);
+
     padding: 26px;
+
     display:flex;
     flex-direction:column;
+
     gap: 14px;
-    transition: border-color .2s, transform .2s;
+
+    transition:
+      border-color .2s,
+      transform .2s;
   }
+
 
   .card:hover,
   .card:focus-within{
     border-color: var(--accent-dim);
+
     transform: translateY(-3px);
   }
 
+
   .card-media{
     aspect-ratio: 16/9;
+
     background: var(--bg-panel-2);
+
     border: 1px dashed var(--line);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     font-family: var(--font-mono);
+
     font-size: 11px;
+
     color: var(--text-muted);
+
     text-transform: uppercase;
+
     letter-spacing: 0.08em;
+
     overflow: hidden;
+
     position: relative;
+
     cursor: pointer;
   }
+
 
   .card-media video,
   .card-media img{
     width:100%;
     height:100%;
+
     object-fit: cover;
   }
+
 
   /* ---------- Video modal ---------- */
 
   .video-modal{
     position: fixed;
+
     inset: 0;
+
     background: rgba(6,8,10,0.9);
+
     z-index: 200;
+
     display: none;
+
     align-items: center;
     justify-content: center;
+
     padding: 60px 24px 24px;
   }
+
 
   .video-modal.active{
     display: flex;
   }
 
+
   .video-modal-inner{
     position: relative;
+
     width: 100%;
+
     max-width: 960px;
+
     aspect-ratio: 16/9;
+
     background: #000;
+
     border: 1px solid var(--line);
   }
+
 
   .video-modal-inner iframe,
   .video-modal-inner video{
     width: 100%;
     height: 100%;
+
     border: 0;
   }
 
+
   .video-modal-close{
     position: absolute;
+
     top: -42px;
     right: 0;
+
     background: none;
+
     border: 1px solid var(--line);
+
     color: var(--text);
+
     font-family: var(--font-mono);
+
     font-size: 12px;
+
     text-transform: uppercase;
+
     letter-spacing: 0.05em;
+
     padding: 9px 16px;
+
     cursor: pointer;
-    transition: border-color .2s, color .2s;
+
+    transition:
+      border-color .2s,
+      color .2s;
   }
+
 
   .video-modal-close:hover,
   .video-modal-close:focus-visible{
@@ -591,153 +813,238 @@
     color: var(--accent);
   }
 
+
   .card-top{
     display:flex;
+
     justify-content: space-between;
     align-items:flex-start;
+
     gap: 12px;
   }
 
+
   .card h3{
     font-family: var(--font-display);
+
     font-size: 19px;
+
     font-weight: 600;
   }
 
+
   .card-year{
     font-family: var(--font-mono);
+
     font-size: 11px;
+
     color: var(--text-muted);
+
     white-space:nowrap;
+
     margin-top: 4px;
   }
 
+
   .card p{
     color: var(--text-muted);
+
     font-size: 14.5px;
   }
 
+
   .tags{
     display:flex;
+
     flex-wrap:wrap;
+
     gap: 8px;
+
     margin-top: auto;
   }
 
+
   .tag{
     font-family: var(--font-mono);
+
     font-size: 10.5px;
+
     text-transform: uppercase;
+
     letter-spacing: 0.06em;
+
     color: var(--accent);
+
     border: 1px solid var(--accent-dim);
+
     padding: 4px 9px;
+
     border-radius: var(--radius);
   }
 
+
   .card-link{
     font-family: var(--font-mono);
+
     font-size: 12px;
+
     text-decoration: none;
+
     color: var(--text);
+
     border-bottom: 1px solid var(--line);
+
     align-self: flex-start;
+
     padding-bottom: 2px;
-    transition: color .2s, border-color .2s;
+
+    transition:
+      color .2s,
+      border-color .2s;
   }
+
 
   .card-link:hover{
     color: var(--accent);
+
     border-color: var(--accent);
   }
+
 
   /* ---------- About ---------- */
 
   .about-grid{
     display:grid;
+
     grid-template-columns: 1.1fr 1fr;
+
     gap: 48px;
+
     align-items:start;
   }
 
+
   .about-text p{
     color: var(--text-muted);
+
     margin-bottom: 16px;
+
     max-width: 60ch;
   }
 
+
   .about-text strong{
     color: var(--text);
+
     font-weight: 600;
   }
 
+
   .skill-panel{
     background: var(--bg-panel);
+
     border: 1px solid var(--line);
+
     padding: 26px;
   }
 
+
   .skill-panel .hud-label{
     display:block;
+
     margin-bottom: 18px;
   }
 
+
   .skill-row{
     display:flex;
+
     justify-content: space-between;
+
     padding: 10px 0;
+
     border-bottom: 1px solid var(--line);
+
     font-size: 14px;
   }
+
 
   .skill-row:last-child{
     border-bottom:none;
   }
 
+
   .skill-row span:last-child{
     font-family: var(--font-mono);
+
     font-size: 12px;
+
     color: var(--text-muted);
   }
+
 
   /* ---------- Contact ---------- */
 
   .contact-panel{
     padding: 56px 48px;
+
     text-align:center;
+
     position:relative;
   }
 
+
   .contact-panel h2{
     font-family: var(--font-display);
+
     font-size: clamp(26px, 4vw, 38px);
+
     margin-bottom: 16px;
   }
 
+
   .contact-panel p{
     color: var(--text-muted);
+
     max-width: 460px;
+
     margin: 0 auto 30px;
   }
 
+
   .contact-links{
     display:flex;
+
     gap: 18px;
+
     justify-content:center;
+
     flex-wrap:wrap;
   }
 
+
   footer{
     border-top: 1px solid var(--line);
+
     padding: 26px 0;
+
     font-family: var(--font-mono);
+
     font-size: 11.5px;
+
     color: var(--text-muted);
+
     display:flex;
+
     justify-content: space-between;
+
     flex-wrap: wrap;
+
     gap: 10px;
   }
+
+
+  /* ---------- Responsive ---------- */
 
   @media (max-width: 760px){
 
@@ -745,15 +1052,18 @@
       display:none;
     }
 
+
     .grid,
     .about-grid{
       grid-template-columns: 1fr;
     }
 
+
     .hero-inner,
     .contact-panel{
       padding: 40px 24px;
     }
+
 
     .hero-coords{
       display:none;
@@ -761,15 +1071,20 @@
 
   }
 
+
+  /* ---------- Reduced motion ---------- */
+
   @media (prefers-reduced-motion: reduce){
 
     html{
       scroll-behavior: auto;
     }
 
+
     *{
       transition: none !important;
     }
+
 
     .bg-icon{
       animation: none !important;
@@ -777,173 +1092,569 @@
 
   }
 
+
   :focus-visible{
     outline: 2px solid var(--accent);
+
     outline-offset: 2px;
   }
 
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     FLOATING BACKGROUND ICONS
+     ========================================================= -->
 
 <div class="bg-icons" aria-hidden="true">
 
+
+  <!-- Icon 1 -->
   <span class="bg-icon bg-icon-1">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" stroke="currentColor" stroke-width="1.3"/>
-      <path d="M12 3v9M12 12l8-4.5M12 12l-8-4.5M12 12v9" stroke="currentColor" stroke-width="1.3"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <path
+        d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <path
+        d="M12 3v9M12 12l8-4.5M12 12l-8-4.5M12 12v9"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 2 -->
   <span class="bg-icon bg-icon-2">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 5L3 12l5 7M16 5l5 7-5 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <path
+        d="M8 5L3 12l5 7M16 5l5 7-5 7"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 3 -->
   <span class="bg-icon bg-icon-3">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 9h18v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M3 9l1.5-4.5 4 1-1.5 3.5M9.5 9l1-4.3 4 .9-1 3.4M16 9l.8-4 4 .8-.8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <path
+        d="M3 9h18v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"
+        stroke="currentColor"
+        stroke-width="1.4"
+      />
+
+      <path
+        d="M3 9l1.5-4.5 4 1-1.5 3.5M9.5 9l1-4.3 4 .9-1 3.4M16 9l.8-4 4 .8-.8 3.2"
+        stroke="currentColor"
+        stroke-width="1.4"
+        stroke-linejoin="round"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 4 -->
   <span class="bg-icon bg-icon-4">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="8" width="20" height="9" rx="4" stroke="currentColor" stroke-width="1.4"/>
-      <circle cx="8" cy="12.5" r="1.5" fill="currentColor"/>
-      <circle cx="16" cy="12.5" r="1.5" fill="currentColor"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <rect
+        x="2"
+        y="8"
+        width="20"
+        height="9"
+        rx="4"
+        stroke="currentColor"
+        stroke-width="1.4"
+      />
+
+      <circle
+        cx="8"
+        cy="12.5"
+        r="1.5"
+        fill="currentColor"
+      />
+
+      <circle
+        cx="16"
+        cy="12.5"
+        r="1.5"
+        fill="currentColor"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 5 -->
   <span class="bg-icon bg-icon-5">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="5" cy="6" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="19" cy="6" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="5" cy="20" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="19" cy="20" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <path d="M6.6 7.2L11 12M13 12l4.4-4.8M11.3 14.3L6.5 18.7M12.7 14.3l4.5 4.4" stroke="currentColor" stroke-width="1.1"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <circle
+        cx="5"
+        cy="6"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <circle
+        cx="19"
+        cy="6"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <circle
+        cx="12"
+        cy="13"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <circle
+        cx="5"
+        cy="20"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <circle
+        cx="19"
+        cy="20"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <path
+        d="M6.6 7.2L11 12M13 12l4.4-4.8M11.3 14.3L6.5 18.7M12.7 14.3l4.5 4.4"
+        stroke="currentColor"
+        stroke-width="1.1"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 6 -->
   <span class="bg-icon bg-icon-6">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M12 4c3 3 3 13 0 16M4 12c3-3 13-3 16 0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <circle
+        cx="12"
+        cy="12"
+        r="8"
+        stroke="currentColor"
+        stroke-width="1.4"
+      />
+
+      <path
+        d="M12 4c3 3 3 13 0 16M4 12c3-3 13-3 16 0"
+        stroke="currentColor"
+        stroke-width="1"
+        opacity="0.6"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 7 -->
   <span class="bg-icon bg-icon-7">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" stroke="currentColor" stroke-width="1.3"/>
-      <path d="M12 3v9M12 12l8-4.5M12 12l-8-4.5M12 12v9" stroke="currentColor" stroke-width="1.3"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <path
+        d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <path
+        d="M12 3v9M12 12l8-4.5M12 12l-8-4.5M12 12v9"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 8 -->
   <span class="bg-icon bg-icon-8">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 5L3 12l5 7M16 5l5 7-5 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <path
+        d="M8 5L3 12l5 7M16 5l5 7-5 7"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 9 -->
   <span class="bg-icon bg-icon-9">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="8" width="20" height="9" rx="4" stroke="currentColor" stroke-width="1.4"/>
-      <circle cx="8" cy="12.5" r="1.5" fill="currentColor"/>
-      <circle cx="16" cy="12.5" r="1.5" fill="currentColor"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <rect
+        x="2"
+        y="8"
+        width="20"
+        height="9"
+        rx="4"
+        stroke="currentColor"
+        stroke-width="1.4"
+      />
+
+      <circle
+        cx="8"
+        cy="12.5"
+        r="1.5"
+        fill="currentColor"
+      />
+
+      <circle
+        cx="16"
+        cy="12.5"
+        r="1.5"
+        fill="currentColor"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 10 -->
   <span class="bg-icon bg-icon-10">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M12 4c3 3 3 13 0 16M4 12c3-3 13-3 16 0" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <circle
+        cx="12"
+        cy="12"
+        r="8"
+        stroke="currentColor"
+        stroke-width="1.4"
+      />
+
+      <path
+        d="M12 4c3 3 3 13 0 16M4 12c3-3 13-3 16 0"
+        stroke="currentColor"
+        stroke-width="1"
+        opacity="0.6"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 11 -->
   <span class="bg-icon bg-icon-11">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="5" cy="6" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="19" cy="6" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="5" cy="20" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="19" cy="20" r="2" stroke="currentColor" stroke-width="1.3"/>
-      <path d="M6.6 7.2L11 12M13 12l4.4-4.8M11.3 14.3L6.5 18.7M12.7 14.3l4.5 4.4" stroke="currentColor" stroke-width="1.1"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <circle
+        cx="5"
+        cy="6"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <circle
+        cx="19"
+        cy="6"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <circle
+        cx="12"
+        cy="13"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <circle
+        cx="5"
+        cy="20"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <circle
+        cx="19"
+        cy="20"
+        r="2"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+
+      <path
+        d="M6.6 7.2L11 12M13 12l4.4-4.8M11.3 14.3L6.5 18.7M12.7 14.3l4.5 4.4"
+        stroke="currentColor"
+        stroke-width="1.1"
+      />
+
     </svg>
+
   </span>
 
+
+  <!-- Icon 12 -->
   <span class="bg-icon bg-icon-12">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 9h18v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z" stroke="currentColor" stroke-width="1.4"/>
-      <path d="M3 9l1.5-4.5 4 1-1.5 3.5M9.5 9l1-4.3 4 .9-1 3.4M16 9l.8-4 4 .8-.8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <path
+        d="M3 9h18v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"
+        stroke="currentColor"
+        stroke-width="1.4"
+      />
+
+      <path
+        d="M3 9l1.5-4.5 4 1-1.5 3.5M9.5 9l1-4.3 4 .9-1 3.4M16 9l.8-4 4 .8-.8 3.2"
+        stroke="currentColor"
+        stroke-width="1.4"
+        stroke-linejoin="round"
+      />
+
     </svg>
+
   </span>
 
 </div>
 
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
 <header>
+
   <div class="wrap nav">
-    <div class="logo">TOMMASO<span>.</span></div>
+
+    <div class="logo">
+      TOMMASO<span>.</span>
+    </div>
+
 
     <ul class="nav-links">
-      <li><a href="#progetti">Progetti</a></li>
-      <li><a href="#chi-sono">Chi sono</a></li>
-      <li><a href="#contatti">Contatti</a></li>
+
+      <li>
+        <a href="#progetti">
+          Progetti
+        </a>
+      </li>
+
+      <li>
+        <a href="#chi-sono">
+          Chi sono
+        </a>
+      </li>
+
+      <li>
+        <a href="#contatti">
+          Contatti
+        </a>
+      </li>
+
     </ul>
+
   </div>
+
 </header>
+
 
 <main>
 
+
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
+
   <section class="hero">
+
     <div class="wrap">
+
       <div class="viewport hero-inner">
+
         <div class="b2"></div>
+
 
         <div class="hud-label hero-tag">
           // technical art &amp; graphics development
         </div>
 
+
         <h1>
-          Unisco codice e immagine: rendering <em>real-time</em>, VFX e pipeline grafiche.
+          Unisco codice e immagine:
+          rendering <em>real-time</em>,
+          VFX e pipeline grafiche.
         </h1>
 
+
         <p class="lead">
-          Technical Artist e Graphics Developer — C++, Unity, shader, compositing VFX.
+          Technical Artist e Graphics Developer —
+          C++, Unity, shader, compositing VFX.
         </p>
 
+
         <div class="hero-actions">
-          <a href="#progetti" class="btn btn-primary">
+
+          <a
+            href="#progetti"
+            class="btn btn-primary"
+          >
             Vedi i progetti
           </a>
 
-          <a href="asset/cv-tommaso.pdf" class="btn btn-ghost">
+
+          <a
+            href="asset/cv-tommaso.pdf"
+            class="btn btn-ghost"
+          >
             Scarica CV
           </a>
+
         </div>
+
 
         <div class="hero-coords">
           X:0.00 Y:1.00 Z:0.00
         </div>
+
       </div>
+
     </div>
+
   </section>
 
+
+  <!-- =======================================================
+       PROJECTS
+       ======================================================= -->
+
   <section id="progetti">
+
     <div class="wrap">
 
+
       <div class="section-head">
-        <span class="section-num">01</span>
-        <h2 class="section-title">Progetti</h2>
+
+        <span class="section-num">
+          01
+        </span>
+
+        <h2 class="section-title">
+          Progetti
+        </h2>
+
         <div class="section-rule"></div>
+
       </div>
+
 
       <div class="grid">
 
+
         <!-- Chemical Cronicles -->
+
         <article class="card">
+
 
           <div
             class="card-media"
@@ -952,6 +1663,7 @@
             tabindex="0"
             aria-label="Guarda su YouTube: Chemical Cronicles"
           >
+
             <video
               class="preview-video"
               src="asset/Chemical%20Cronicles.mp4"
@@ -960,22 +1672,45 @@
               loop
               playsinline
             ></video>
+
           </div>
+
 
           <div class="card-top">
-            <h3>Chemical Cronicles</h3>
-            <span class="card-year">2023–2025</span>
+
+            <h3>
+              Chemical Cronicles
+            </h3>
+
+            <span class="card-year">
+              2023–2025
+            </span>
+
           </div>
+
 
           <p>
-            Demo di un videogioco sviluppato in Unity, con meccaniche di gameplay e livello giocabile.
+            Demo di un videogioco sviluppato in Unity,
+            con meccaniche di gameplay e livello giocabile.
           </p>
 
+
           <div class="tags">
-            <span class="tag">Unity</span>
-            <span class="tag">C#</span>
-            <span class="tag">Game Design</span>
+
+            <span class="tag">
+              Unity
+            </span>
+
+            <span class="tag">
+              C#
+            </span>
+
+            <span class="tag">
+              Game Design
+            </span>
+
           </div>
+
 
           <a
             href="https://www.youtube.com/watch?v=fwJb4QYb_0Q"
@@ -988,8 +1723,11 @@
 
         </article>
 
+
         <!-- NeonSkies -->
+
         <article class="card">
+
 
           <div
             class="card-media"
@@ -998,6 +1736,7 @@
             tabindex="0"
             aria-label="Guarda su YouTube: NeonSkies"
           >
+
             <video
               class="preview-video"
               src="asset/NeonSkies.mov"
@@ -1006,22 +1745,45 @@
               loop
               playsinline
             ></video>
+
           </div>
+
 
           <div class="card-top">
-            <h3>NeonSkies</h3>
-            <span class="card-year">2023–2025</span>
+
+            <h3>
+              NeonSkies
+            </h3>
+
+            <span class="card-year">
+              2023–2025
+            </span>
+
           </div>
+
 
           <p>
-            Piccolo videogioco sviluppato interamente su un motore grafico custom in OpenGL.
+            Piccolo videogioco sviluppato interamente
+            su un motore grafico custom in OpenGL.
           </p>
 
+
           <div class="tags">
-            <span class="tag">C++</span>
-            <span class="tag">OpenGL</span>
-            <span class="tag">Game Dev</span>
+
+            <span class="tag">
+              C++
+            </span>
+
+            <span class="tag">
+              OpenGL
+            </span>
+
+            <span class="tag">
+              Game Dev
+            </span>
+
           </div>
+
 
           <a
             href="https://youtu.be/a0h3NOdOGj4"
@@ -1034,8 +1796,11 @@
 
         </article>
 
+
         <!-- Coca-Cola -->
+
         <article class="card">
+
 
           <div
             class="card-media"
@@ -1044,6 +1809,7 @@
             tabindex="0"
             aria-label="Guarda su YouTube: Coca-Cola"
           >
+
             <video
               class="preview-video"
               src="asset/Coca-Cola.mov"
@@ -1052,22 +1818,45 @@
               loop
               playsinline
             ></video>
+
           </div>
+
 
           <div class="card-top">
-            <h3>Coca-Cola</h3>
-            <span class="card-year">2023–2025</span>
+
+            <h3>
+              Coca-Cola
+            </h3>
+
+            <span class="card-year">
+              2023–2025
+            </span>
+
           </div>
+
 
           <p>
-            Ricostruzione animata di uno spot pubblicitario Coca-Cola, realizzata interamente in Blender.
+            Ricostruzione animata di uno spot pubblicitario
+            Coca-Cola, realizzata interamente in Blender.
           </p>
 
+
           <div class="tags">
-            <span class="tag">Blender</span>
-            <span class="tag">Animazione</span>
-            <span class="tag">VFX</span>
+
+            <span class="tag">
+              Blender
+            </span>
+
+            <span class="tag">
+              Animazione
+            </span>
+
+            <span class="tag">
+              VFX
+            </span>
+
           </div>
+
 
           <a
             href="https://youtu.be/cQ1yuRKbnRs"
@@ -1080,8 +1869,11 @@
 
         </article>
 
+
         <!-- Varang -->
+
         <article class="card">
+
 
           <div
             class="card-media"
@@ -1090,6 +1882,7 @@
             tabindex="0"
             aria-label="Guarda su YouTube: Varang"
           >
+
             <video
               class="preview-video"
               src="asset/Varang.mov"
@@ -1098,22 +1891,45 @@
               loop
               playsinline
             ></video>
+
           </div>
+
 
           <div class="card-top">
-            <h3>Varang</h3>
-            <span class="card-year">2023–2025</span>
+
+            <h3>
+              Varang
+            </h3>
+
+            <span class="card-year">
+              2023–2025
+            </span>
+
           </div>
+
 
           <p>
-            Cortometraggio d'animazione realizzato in Blender con tecnica Grease Pencil.
+            Cortometraggio d'animazione realizzato in Blender
+            con tecnica Grease Pencil.
           </p>
 
+
           <div class="tags">
-            <span class="tag">Blender</span>
-            <span class="tag">Grease Pencil</span>
-            <span class="tag">Animazione</span>
+
+            <span class="tag">
+              Blender
+            </span>
+
+            <span class="tag">
+              Grease Pencil
+            </span>
+
+            <span class="tag">
+              Animazione
+            </span>
+
           </div>
+
 
           <a
             href="https://youtu.be/dXTHQsCUC-o"
@@ -1126,20 +1942,40 @@
 
         </article>
 
+
       </div>
+
     </div>
+
   </section>
 
+
+  <!-- =======================================================
+       ABOUT
+       ======================================================= -->
+
   <section id="chi-sono">
+
     <div class="wrap">
 
+
       <div class="section-head">
-        <span class="section-num">02</span>
-        <h2 class="section-title">Chi sono</h2>
+
+        <span class="section-num">
+          02
+        </span>
+
+        <h2 class="section-title">
+          Chi sono
+        </h2>
+
         <div class="section-rule"></div>
+
       </div>
 
+
       <div class="about-grid">
+
 
         <div class="about-text">
 
@@ -1151,6 +1987,7 @@
             moderni, C++/OpenGL e strumenti assistiti dall'AI.
           </p>
 
+
           <p>
             Tra i miei ambiti: shader e pipeline grafiche, sistemi interattivi
             in Unity, compositing VFX per prodotti audiovisivi e modelli di
@@ -1160,84 +1997,170 @@
 
         </div>
 
+
         <div class="skill-panel viewport">
 
           <div class="b2"></div>
 
-          <span class="hud-label">// stack</span>
+
+          <span class="hud-label">
+            // stack
+          </span>
+
 
           <div class="skill-row">
-            <span>C++ / OpenGL</span>
-            <span>Motori &amp; shader</span>
+
+            <span>
+              C++ / OpenGL
+            </span>
+
+            <span>
+              Motori &amp; shader
+            </span>
+
           </div>
 
-          <div class="skill-row">
-            <span>Unity / C#</span>
-            <span>Sistemi interattivi</span>
-          </div>
 
           <div class="skill-row">
-            <span>Nuke / After Effects</span>
-            <span>VFX compositing</span>
+
+            <span>
+              Unity / C#
+            </span>
+
+            <span>
+              Sistemi interattivi
+            </span>
+
           </div>
 
+
           <div class="skill-row">
-            <span>Python</span>
-            <span>ML &amp; analisi dati</span>
+
+            <span>
+              Nuke / After Effects
+            </span>
+
+            <span>
+              VFX compositing
+            </span>
+
           </div>
+
+
+          <div class="skill-row">
+
+            <span>
+              Python
+            </span>
+
+            <span>
+              ML &amp; analisi dati
+            </span>
+
+          </div>
+
 
         </div>
 
       </div>
+
     </div>
+
   </section>
 
+
+  <!-- =======================================================
+       CONTACT
+       ======================================================= -->
+
   <section id="contatti">
+
     <div class="wrap">
+
 
       <div class="viewport contact-panel">
 
         <div class="b2"></div>
 
-        <h2>Parliamone.</h2>
+
+        <h2>
+          Parliamone.
+        </h2>
+
 
         <p>
-          Sono disponibile per collaborazioni e opportunità nello sviluppo Unity/VR/AR.
+          Sono disponibile per collaborazioni e opportunità
+          nello sviluppo Unity/VR/AR.
         </p>
+
 
         <div class="contact-links">
 
-          <a href="mailto:tuaemail@example.com" class="btn btn-primary">
+
+          <a
+            href="mailto:tuaemail@example.com"
+            class="btn btn-primary"
+          >
             Scrivimi
           </a>
 
-          <a href="https://linkedin.com/in/tuoprofilo" class="btn btn-ghost">
+
+          <a
+            href="https://linkedin.com/in/tuoprofilo"
+            class="btn btn-ghost"
+          >
             LinkedIn
           </a>
 
-          <a href="https://github.com/tuoprofilo" class="btn btn-ghost">
+
+          <a
+            href="https://github.com/tuoprofilo"
+            class="btn btn-ghost"
+          >
             GitHub
           </a>
+
 
         </div>
 
       </div>
 
     </div>
+
   </section>
+
 
 </main>
 
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
 <footer class="wrap">
-  <span>© 2026 Tommaso</span>
-  <span>Portfolio personale</span>
+
+  <span>
+    © 2026 Tommaso
+  </span>
+
+  <span>
+    Portfolio personale
+  </span>
+
 </footer>
 
-<!-- Video modal -->
 
-<div class="video-modal" id="videoModal">
+<!-- =========================================================
+     VIDEO MODAL
+     ========================================================= -->
+
+<div
+  class="video-modal"
+  id="videoModal"
+>
 
   <div class="video-modal-inner">
+
 
     <button
       class="video-modal-close"
@@ -1247,6 +2170,7 @@
       Chiudi ✕
     </button>
 
+
     <iframe
       id="videoModalIframe"
       src=""
@@ -1255,81 +2179,137 @@
       allowfullscreen
     ></iframe>
 
+
   </div>
 
 </div>
 
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
 <script>
+
   (function(){
 
-    var modal = document.getElementById('videoModal');
-    var iframe = document.getElementById('videoModalIframe');
+    var modal =
+      document.getElementById('videoModal');
+
+    var iframe =
+      document.getElementById('videoModalIframe');
+
 
     function openModal(youtubeId){
 
       if(!youtubeId) return;
+
 
       iframe.src =
         'https://www.youtube.com/embed/' +
         youtubeId +
         '?autoplay=1&rel=0';
 
+
       modal.classList.add('active');
+
     }
+
 
     function closeModal(){
 
       modal.classList.remove('active');
+
       iframe.src = '';
 
     }
+
 
     document
       .querySelectorAll('.card-media[data-youtube]')
       .forEach(function(el){
 
-        el.addEventListener('click', function(){
-          openModal(el.dataset.youtube);
-        });
 
-        el.addEventListener('keydown', function(e){
+        el.addEventListener(
+          'click',
+          function(){
 
-          if(e.key === 'Enter' || e.key === ' '){
-
-            e.preventDefault();
-            openModal(el.dataset.youtube);
+            openModal(
+              el.dataset.youtube
+            );
 
           }
+        );
 
-        });
+
+        el.addEventListener(
+          'keydown',
+          function(e){
+
+
+            if(
+              e.key === 'Enter' ||
+              e.key === ' '
+            ){
+
+              e.preventDefault();
+
+              openModal(
+                el.dataset.youtube
+              );
+
+            }
+
+          }
+        );
+
 
       });
 
+
     document
       .getElementById('videoModalClose')
-      .addEventListener('click', closeModal);
+      .addEventListener(
+        'click',
+        closeModal
+      );
 
-    modal.addEventListener('click', function(e){
 
-      if(e.target === modal){
-        closeModal();
+    modal.addEventListener(
+      'click',
+      function(e){
+
+        if(e.target === modal){
+
+          closeModal();
+
+        }
+
       }
+    );
 
-    });
 
-    document.addEventListener('keydown', function(e){
+    document.addEventListener(
+      'keydown',
+      function(e){
 
-      if(
-        e.key === 'Escape' &&
-        modal.classList.contains('active')
-      ){
-        closeModal();
+        if(
+          e.key === 'Escape' &&
+          modal.classList.contains('active')
+        ){
+
+          closeModal();
+
+        }
+
       }
+    );
 
-    });
 
   })();
+
 </script>
+
 
 </body>
 </html>
