@@ -1181,6 +1181,8 @@ section{
 
   justify-content:space-between;
 
+  gap:16px;
+
   padding:10px 0;
 
   border-bottom:1px solid var(--line);
@@ -1194,6 +1196,12 @@ section{
 }
 
 
+.skill-row span:first-child{
+
+  color:var(--text);
+}
+
+
 .skill-row span:last-child{
 
   font-family:var(--font-mono);
@@ -1201,7 +1209,36 @@ section{
   font-size:12px;
 
   color:var(--text-muted);
+
+  text-align:right;
+
+  white-space:nowrap;
 }
+
+
+/* Brand colors per tool */
+
+.tool-name{
+  font-weight:600;
+}
+
+.tool-sep{
+  color:var(--text-muted);
+  font-weight:400;
+}
+
+.tool-unity{ color:#ffffff; }
+.tool-unreal{ color:#ffffff; }
+.tool-csharp{ color:#A179DC; }
+.tool-cpp{ color:#659AD2; }
+.tool-opengl{ color:#5586A4; }
+.tool-blender{ color:#EA7600; }
+.tool-photoshop{ color:#31A8FF; }
+.tool-nuke{ color:#F7C948; }
+.tool-ae{ color:#B79EFF; }
+.tool-resolve{ color:#3FA9F5; }
+.tool-python{ color:#4B8BBE; }
+.tool-pytorch{ color:#EE4C2C; }
 
 
 
@@ -2624,14 +2661,27 @@ footer{
 
 
         <span class="hud-label">
-          // stack
+          // tools &amp; software
         </span>
 
 
         <div class="skill-row">
 
           <span>
-            C++ / OpenGL / Blender
+            <span class="tool-name tool-unity">Unity</span><span class="tool-sep"> / </span><span class="tool-name tool-unreal">Unreal Engine</span><span class="tool-sep"> / </span><span class="tool-name tool-csharp">C#</span>
+          </span>
+
+          <span>
+            Game engines
+          </span>
+
+        </div>
+
+
+        <div class="skill-row">
+
+          <span>
+            <span class="tool-name tool-cpp">C++</span><span class="tool-sep"> / </span><span class="tool-name tool-opengl">OpenGL</span>
           </span>
 
           <span>
@@ -2644,24 +2694,11 @@ footer{
         <div class="skill-row">
 
           <span>
-            Unity / C#
+            <span class="tool-name tool-blender">Blender</span><span class="tool-sep"> / </span><span class="tool-name tool-photoshop">Photoshop</span>
           </span>
 
           <span>
-            Interactive systems
-          </span>
-
-        </div>
-
-
-        <div class="skill-row">
-
-          <span>
-            Nuke / After Effects
-          </span>
-
-          <span>
-            VFX compositing
+            3D &amp; digital art
           </span>
 
         </div>
@@ -2670,7 +2707,20 @@ footer{
         <div class="skill-row">
 
           <span>
-            Python
+            <span class="tool-name tool-nuke">Nuke</span><span class="tool-sep"> / </span><span class="tool-name tool-ae">After Effects</span><span class="tool-sep"> / </span><span class="tool-name tool-resolve">DaVinci Resolve</span>
+          </span>
+
+          <span>
+            VFX &amp; editing
+          </span>
+
+        </div>
+
+
+        <div class="skill-row">
+
+          <span>
+            <span class="tool-name tool-python">Python</span><span class="tool-sep"> / </span><span class="tool-name tool-pytorch">PyTorch</span>
           </span>
 
           <span>
