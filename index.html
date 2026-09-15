@@ -2514,7 +2514,7 @@ footer{
       </article>
 
 
-      <!-- ===================================================
+<!-- ===================================================
      POLICUMBENT
      =================================================== -->
 
@@ -2522,35 +2522,32 @@ footer{
 
   <div
     class="card-media"
+    data-pdf="asset/Policumbent.pdf"
     role="button"
     tabindex="0"
-    aria-label="Watch Policumbent"
+    aria-label="Open Policumbent PDF"
   >
 
-
-<video
-  class="preview-video"
-  src="asset/Policumbent.mov"
-  autoplay
-  muted
-  loop
-  playsinline
-></video>
-
+    <video
+      class="preview-video"
+      src="asset/Policumbent.mov"
+      autoplay
+      muted
+      loop
+      playsinline
+    ></video>
 
   </div>
 
   <div class="card-top">
 
+    <h3>
+      Policumbent — Promotional Content
+    </h3>
 
-<h3>
-  Policumbent — Promotional Content
-</h3>
-
-<span class="card-year">
-  2023–2025
-</span>
-
+    <span class="card-year">
+      2025
+    </span>
 
   </div>
 
@@ -2560,23 +2557,21 @@ footer{
 
   <div class="tags">
 
-<span class="tag">
-  Blender
-</span>
+    <span class="tag">
+      Blender
+    </span>
 
-<span class="tag">
-  After Effects
-</span>
+    <span class="tag">
+      After Effects
+    </span>
 
-<span class="tag">
-  DaVinci Resolve
-</span>
-
+    <span class="tag">
+      DaVinci Resolve
+    </span>
 
   </div>
 
 </article>
-
 
 <!-- ===================================================
      SOLAR SYSTEM SIMULATOR
@@ -2987,21 +2982,33 @@ footer{
   var modal =
     document.getElementById('videoModal');
 
-
   var iframe =
     document.getElementById('videoModalIframe');
 
 
-  function openModal(youtubeId){
+  function openYouTube(youtubeId){
 
     if(!youtubeId) return;
-
 
     iframe.src =
       'https://www.youtube.com/embed/' +
       youtubeId +
       '?autoplay=1&rel=0';
 
+    iframe.title = 'Project video';
+
+    modal.classList.add('active');
+
+  }
+
+
+  function openPDF(pdfPath){
+
+    if(!pdfPath) return;
+
+    iframe.src = pdfPath;
+
+    iframe.title = 'Policumbent promotional content';
 
     modal.classList.add('active');
 
@@ -3017,6 +3024,8 @@ footer{
   }
 
 
+  /* YouTube cards */
+
   document
     .querySelectorAll('.card-media[data-youtube]')
     .forEach(function(el){
@@ -3025,7 +3034,7 @@ footer{
         'click',
         function(){
 
-          openModal(
+          openYouTube(
             el.dataset.youtube
           );
 
@@ -3044,7 +3053,7 @@ footer{
 
             e.preventDefault();
 
-            openModal(
+            openYouTube(
               el.dataset.youtube
             );
 
@@ -3056,6 +3065,49 @@ footer{
     });
 
 
+  /* PDF cards */
+
+  document
+    .querySelectorAll('.card-media[data-pdf]')
+    .forEach(function(el){
+
+      el.addEventListener(
+        'click',
+        function(){
+
+          openPDF(
+            el.dataset.pdf
+          );
+
+        }
+      );
+
+
+      el.addEventListener(
+        'keydown',
+        function(e){
+
+          if(
+            e.key === 'Enter' ||
+            e.key === ' '
+          ){
+
+            e.preventDefault();
+
+            openPDF(
+              el.dataset.pdf
+            );
+
+          }
+
+        }
+      );
+
+    });
+
+
+  /* Close button */
+
   document
     .getElementById('videoModalClose')
     .addEventListener(
@@ -3063,6 +3115,8 @@ footer{
       closeModal
     );
 
+
+  /* Click outside */
 
   modal.addEventListener(
     'click',
@@ -3077,6 +3131,8 @@ footer{
     }
   );
 
+
+  /* ESC */
 
   document.addEventListener(
     'keydown',
@@ -3093,6 +3149,7 @@ footer{
 
     }
   );
+
 
 })();
 
